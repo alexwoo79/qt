@@ -1,0 +1,42 @@
+file(REMOVE_RECURSE
+  ".qt/rcc/qrc_appday21_raw_qml_0.cpp"
+  ".qt/rcc/qrc_qmake_day21.cpp"
+  ".rcc/qmlcache/appday21_Main_qml.cpp"
+  ".rcc/qmlcache/appday21_Main_qml.cpp.aotstats"
+  ".rcc/qmlcache/appday21_qmlcache_loader.cpp"
+  "CMakeFiles/appday21.dir/link.d"
+  "CMakeFiles/appday21_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/appday21_autogen.dir/ParseCache.txt"
+  "appday21_autogen"
+  "CMakeFiles/appday21.dir/.qt/rcc/qrc_appday21_raw_qml_0.cpp.o"
+  "CMakeFiles/appday21.dir/.qt/rcc/qrc_appday21_raw_qml_0.cpp.o.d"
+  "CMakeFiles/appday21.dir/.qt/rcc/qrc_qmake_day21.cpp.o"
+  "CMakeFiles/appday21.dir/.qt/rcc/qrc_qmake_day21.cpp.o.d"
+  "CMakeFiles/appday21.dir/.rcc/qmlcache/appday21_Main_qml.cpp.o"
+  "CMakeFiles/appday21.dir/.rcc/qmlcache/appday21_Main_qml.cpp.o.d"
+  "CMakeFiles/appday21.dir/.rcc/qmlcache/appday21_qmlcache_loader.cpp.o"
+  "CMakeFiles/appday21.dir/.rcc/qmlcache/appday21_qmlcache_loader.cpp.o.d"
+  "CMakeFiles/appday21.dir/appday21_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/appday21.dir/appday21_autogen/mocs_compilation.cpp.o.d"
+  "CMakeFiles/appday21.dir/appday21_qmltyperegistrations.cpp.o"
+  "CMakeFiles/appday21.dir/appday21_qmltyperegistrations.cpp.o.d"
+  "CMakeFiles/appday21.dir/main.cpp.o"
+  "CMakeFiles/appday21.dir/main.cpp.o.d"
+  "CMakeFiles/appday21.dir/person.cpp.o"
+  "CMakeFiles/appday21.dir/person.cpp.o.d"
+  "appday21"
+  "appday21.pdb"
+  "appday21_autogen/mocs_compilation.cpp"
+  "appday21_autogen/timestamp"
+  "appday21_qmltyperegistrations.cpp"
+  "day21/appday21.qmltypes"
+  "meta_types/appday21_json_file_list.txt"
+  "meta_types/appday21_json_file_list.txt.timestamp"
+  "meta_types/qt6appday21_metatypes.json"
+  "meta_types/qt6appday21_metatypes.json.gen"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/appday21.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

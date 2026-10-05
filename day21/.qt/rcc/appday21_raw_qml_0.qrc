@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/day21/">
+    <file alias="Main.qml">/home/alex/Documents/github/qt/day21/Main.qml</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/i18n">
+    <file alias="Day3_Counter_zh_CN.qm">/home/alex/Documents/github/qt/Day3_Counter/Day3_Counter_zh_CN.qm</file>
+  </qresource>
+</RCC>
+

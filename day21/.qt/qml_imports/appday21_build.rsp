@@ -1,0 +1,14 @@
+-rootPath
+/home/alex/Documents/github/qt/day21
+-cmake-output
+-output-file
+/home/alex/Documents/github/qt/day21/.qt/qml_imports/appday21_build.cmake
+-importPath
+/home/alex/Documents/github/qt/day21
+-importPath
+/home/alex/Documents/github/qt/day21/day21
+-importPath
+/usr/lib/qt6/qml
+-qrcFiles
+/home/alex/Documents/github/qt/day21/.qt/rcc/qmake_day21.qrc
+/home/alex/Documents/github/qt/day21/.qt/rcc/appday21_raw_qml_0.qrc

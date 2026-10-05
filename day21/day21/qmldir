@@ -1,0 +1,6 @@
+module day21
+typeinfo appday21.qmltypes
+prefer :/qt/qml/day21/
+Main 254.0 Main.qml
+depends QtQuick
+
