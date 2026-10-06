@@ -1,0 +1,1 @@
+/home/alex/Documents/github/learn_cplusplus/build/calculator_qml_autogen/include/calculator_qml.moc.json

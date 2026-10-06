@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini 数据流转示例</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: system-ui, "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+    font-size: 14px;
+    background: #f4f5f7;
+    color: #1f2328;
+    user-select: none;
+  }
+  .app {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    padding: 16px;
+  }
+  .field {
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #c9ced6;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    color: inherit;
+    outline: none;
+  }
+  .field:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+  .row { display: flex; gap: 10px; }
+  .btn {
+    flex: 1;
+    height: 34px;
+    border: 1px solid #c9ced6;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  .btn:hover { background: #f0f2f5; }
+  .btn.primary {
+    border-color: #3b82f6;
+    background: #3b82f6;
+    color: #fff;
+  }
+  .btn.primary:hover { background: #2f74e0; }
+  .status {
+    margin: 0;
+    min-height: 20px;
+    color: #8b949e;
+    word-break: break-word;
+  }
+  .status.ok { color: #15803d; }
+  .status.err { color: #dc2626; }
+  .list {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+    border: 1px solid #e3e6ea;
+    border-radius: 6px;
+    background: #fff;
+  }
+  .item { padding: 10px 12px; border-bottom: 1px solid #f0f2f5; }
+  .item:last-child { border-bottom: 0; }
+  .item.alt { background: #fafbfc; }
+  .list .empty { padding: 10px 12px; color: #9aa4b0; }
+</style>
+</head>
+<body>
+  <main class="app">
+    <input id="name-field" class="field" type="text" placeholder="姓名" autocomplete="off">
+    <input id="age-field" class="field" type="number" min="1" max="150" value="20">
+    <div class="row">
+      <button id="submit-button" class="btn primary" type="button">提交</button>
+      <button id="clear-button" class="btn" type="button">清空</button>
+    </div>
+    <p id="status-text" class="status">等待输入...</p>
+    <ul id="message-list" class="list"></ul>
+  </main>
+
+<script>
+"use strict";
+
+var nameField = document.getElementById("name-field");
+var ageField = document.getElementById("age-field");
+var submitButton = document.getElementById("submit-button");
+var clearButton = document.getElementById("clear-button");
+var statusText = document.getElementById("status-text");
+var messageList = document.getElementById("message-list");
+
+// 样式只认协议里的 level 字段（info / ok / error），
+// 不去嗅探 ✅❌ 这类文本前缀——文案可以在后端随便改，界面不受影响。
+var STATUS_CLASS = { info: "status", ok: "status ok", error: "status err" };
+
+function renderStatus(response) {
+  statusText.textContent = response.status || "";
+  statusText.className = STATUS_CLASS[response.level] || "status";
+}
+
+function renderMessages(messages) {
+  messageList.textContent = "";
+  var items = messages || [];
+  if (items.length === 0) {
+    var hint = document.createElement("li");
+    hint.className = "empty";
+    hint.textContent = "（暂无数据）";
+    messageList.appendChild(hint);
+    return;
+  }
+  items.forEach(function (item, index) {
+    var li = document.createElement("li");
+    li.className = "item" + (index % 2 ? " alt" : "");
+    li.textContent = (index + 1) + ". " + item;
+    messageList.appendChild(li);
+  });
+}
+
+function applyResponse(response) {
+  if (!response) return;
+  renderStatus(response);
+  renderMessages(response.messages);
+}
+
+// C++ 通过 webview 的 eval() 主动调用这里，把一次操作的事件推给页面。
+// error 字段是机器可读的失败原因，需要精确处理某个错误时用它。
+window.__onBackendEvent = function (event) {
+  console.log("C++ 通知:", event.event, "->", event.detail, "| level =", event.level, "| error =", event.error);
+};
+
+// webview 的绑定是在页面脚本之前注入的，这里再等一等，保证 window.getState 已经就绪。
+function whenBackendReady(callback) {
+  var attempts = 0;
+  var timer = setInterval(function () {
+    if (typeof window.getState === "function") {
+      clearInterval(timer);
+      callback();
+    } else if (++attempts > 150) {
+      clearInterval(timer);
+      renderStatus({ status: "❌ 未能连接到 C++ 后端", level: "error" });
+    }
+  }, 20);
+}
+
+whenBackendReady(function () {
+  window.getState().then(applyResponse).catch(function (error) {
+    renderStatus({ status: "❌ 初始化失败: " + error, level: "error" });
+  });
+
+  submitButton.addEventListener("click", function () {
+    var name = nameField.value;
+    var age = Number(ageField.value);
+    window.submitEntry(name, age).then(function (response) {
+      applyResponse(response);
+      nameField.value = "";
+      nameField.focus();
+    });
+  });
+
+  clearButton.addEventListener("click", function () {
+    window.clearMessages().then(applyResponse);
+  });
+});
+</script>
+</body>
+</html>

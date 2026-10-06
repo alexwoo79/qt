@@ -1,0 +1,13 @@
+/home/alex/Documents/github/qt/build/CMakeFiles/Day3_Counter.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/Day3_Counter_lupdate.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/update_translations.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/Day3_Counter_lrelease.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/release_translations.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/edit_cache.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/rebuild_cache.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/list_install_components.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/install.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/install/local.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/install/strip.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/Day3_Counter_autogen_timestamp_deps.dir
+/home/alex/Documents/github/qt/build/CMakeFiles/Day3_Counter_autogen.dir

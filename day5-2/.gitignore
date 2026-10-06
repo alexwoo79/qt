@@ -1,0 +1,12 @@
+# 构建产物
+/build*/
+
+# 编辑器 / IDE
+/.vscode/
+/.qtcreator/
+/.cache/
+compile_commands.json
+*.user*
+*.autosave
+*.swp
+*~

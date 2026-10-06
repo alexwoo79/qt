@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/LogTest.dir/link.d CMakeFiles/LogTest.dir/main.cpp.o CMakeFiles/LogTest.dir/include/log.cpp.o -o LogTest

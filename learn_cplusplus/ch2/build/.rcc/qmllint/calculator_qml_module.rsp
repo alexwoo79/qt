@@ -1,0 +1,14 @@
+-I
+/home/alex/Documents/github/learn_cplusplus/ch2/build
+-I
+/home/alex/Documents/github/learn_cplusplus/ch2/build/LearnCpp/Calculator
+-I
+/home/alex/Documents/github/learn_cplusplus/ch2/build
+-I
+/usr/lib/qt6/qml
+--resource
+/home/alex/Documents/github/learn_cplusplus/ch2/build/.qt/rcc/qmake_LearnCpp_Calculator.qrc
+--resource
+/home/alex/Documents/github/learn_cplusplus/ch2/build/.qt/rcc/calculator_qml_raw_qml_0.qrc
+--module
+LearnCpp.Calculator

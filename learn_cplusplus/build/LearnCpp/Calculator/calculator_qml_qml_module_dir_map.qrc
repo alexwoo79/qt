@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/qt/qml/LearnCpp/Calculator">/home/alex/Documents/github/learn_cplusplus/build/LearnCpp/Calculator</file>
+
+  </qresource>
+</RCC>

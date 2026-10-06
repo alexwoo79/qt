@@ -1,0 +1,6 @@
+module LearnCpp.Calculator
+typeinfo calculator_qml.qmltypes
+prefer :/qt/qml/LearnCpp/Calculator/
+Main 1.0 Main.qml
+depends QtQuick
+

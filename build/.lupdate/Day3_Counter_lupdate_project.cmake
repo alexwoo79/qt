@@ -1,0 +1,11 @@
+set(lupdate_project_file "/home/alex/Documents/github/qt/Day3_Counter/CMakeLists.txt")
+set(lupdate_translations "/home/alex/Documents/github/qt/Day3_Counter/Day3_Counter_zh_CN.ts")
+set(lupdate_include_paths "")
+set(lupdate_sources "")
+set(lupdate_subproject_count 1)
+
+set(lupdate_subproject1_source_dir "/home/alex/Documents/github/qt/Day3_Counter")
+set(lupdate_subproject1_include_paths "/home/alex/Documents/github/qt/build/Day3_Counter_autogen/include;/usr/include/qt6/QtCore;/usr/include/qt6;/usr/lib/qt6/mkspecs/linux-g++;/usr/include/qt6")
+set(lupdate_subproject1_sources "/home/alex/Documents/github/qt/build/Day3_Counter_autogen/mocs_compilation.cpp;main.cpp;counter.cpp;counter.h;/home/alex/Documents/github/qt/build/.qt/rcc/Day3_Counter_translations.qrc;/home/alex/Documents/github/qt/build/Day3_Counter_zh_CN.qm;/home/alex/Documents/github/qt/build/.qt/rcc/qrc_Day3_Counter_translations.cpp;/home/alex/Documents/github/qt/build/Day3_Counter_autogen/timestamp;/home/alex/Documents/github/qt/build/Day3_Counter_zh_CN.qm.rule;/home/alex/Documents/github/qt/build/.qt/rcc/qrc_Day3_Counter_translations.cpp.rule;/home/alex/Documents/github/qt/build/Day3_Counter_autogen/timestamp.rule")
+set(lupdate_subproject1_excluded "")
+set(lupdate_subproject1_autogen_dir "/home/alex/Documents/github/qt/build/Day3_Counter_autogen")

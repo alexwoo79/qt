@@ -1,0 +1,6 @@
+{
+    "code-runner.executorMap": {
+        "cpp": "cd \"$dir\" && g++ -std=c++23 \"$fileName\" -o \"$fileNameWithoutExt\" && ./\"$fileNameWithoutExt\""
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
