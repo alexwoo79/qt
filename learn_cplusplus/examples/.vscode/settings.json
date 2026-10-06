@@ -1,0 +1,11 @@
+{
+    "cmake.sourceDirectory": "/Users/alex/Documents/github/qt/learn_cplusplus/c++primeplus/examples/header_file",
+    "cmake.ignoreCMakeListsMissing": true,
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.clang_format_style": "file",
+    "[cpp]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    }
+}

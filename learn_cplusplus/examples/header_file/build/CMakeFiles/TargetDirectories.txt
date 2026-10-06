@@ -1,0 +1,3 @@
+/Users/alex/Documents/github/qt/learn_cplusplus/c++primeplus/examples/header_file/build/CMakeFiles/HeaderFileExample.dir
+/Users/alex/Documents/github/qt/learn_cplusplus/c++primeplus/examples/header_file/build/CMakeFiles/edit_cache.dir
+/Users/alex/Documents/github/qt/learn_cplusplus/c++primeplus/examples/header_file/build/CMakeFiles/rebuild_cache.dir

@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/qt/qml/LearnCpp/Calculator">
-    <file alias="qmldir">/home/alex/Documents/github/learn_cplusplus/ch2/windows/.build-win64/LearnCpp/Calculator/qmldir</file>
-  </qresource>
-</RCC>
-

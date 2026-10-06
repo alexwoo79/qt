@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_calculator_qml_FILE /home/alex/Documents/github/learn_cplusplus/ch2/build/calculator_qml)
-set(__QT_DEPLOY_TARGET_calculator_qml_TYPE EXECUTABLE)

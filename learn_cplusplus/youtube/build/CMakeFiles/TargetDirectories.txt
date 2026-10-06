@@ -1,3 +1,0 @@
-/home/alex/Documents/github/learn_cplusplus/youtube/build/CMakeFiles/myapp.dir
-/home/alex/Documents/github/learn_cplusplus/youtube/build/CMakeFiles/edit_cache.dir
-/home/alex/Documents/github/learn_cplusplus/youtube/build/CMakeFiles/rebuild_cache.dir

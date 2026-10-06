@@ -1,0 +1,46 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang 生成活动文件",
+            "command": "/usr/bin/clang++",
+            "args": [
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-std=c++23",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "clang++ -std=c++23 生成活动文件（供调试使用）。"
+        },
+        {
+            "type": "shell",
+            "label": "cmake: 构建 header_file",
+            "command": "/opt/homebrew/bin/cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/header_file/build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/header_file"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "重新构建 header_file 的 CMake 目标 HeaderFileExample。"
+        }
+    ],
+    "version": "2.0.0"
+}

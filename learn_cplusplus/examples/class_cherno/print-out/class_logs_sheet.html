@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='zh-CN'><head><meta charset='utf-8'>
+<title>class_logs.cpp</title>
+<style>
+@page { size: A4 portrait; margin: 14mm 12mm; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace;
+  font-size: 7.4pt;
+  line-height: 1.5;
+  color: #000;
+  -webkit-print-color-adjust: exact;
+}
+.doc-head { border-bottom: 1.6pt solid #000; padding-bottom: 3mm; margin-bottom: 4mm; }
+.doc-head h1 { font-size: 12.9pt; margin: 0 0 1.5mm 0; letter-spacing: .4pt; }
+.doc-head .meta { font-size: 7.4pt; color: #333; }
+.sheet { break-before: page; page-break-before: always; }
+.sheet:first-of-type { break-before: auto; page-break-before: auto; }
+.file-head {
+  border-bottom: 1pt solid #000;
+  margin: 0 0 2.5mm 0;
+  padding-bottom: 1.5mm;
+  break-after: avoid;
+  page-break-after: avoid;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+.file-head .name { font-size: 10.4pt; font-weight: bold; }
+.file-head .sub { font-size: 7.4pt; color: #444; white-space: nowrap; }
+table.code { border-collapse: collapse; width: 100%; }
+table.code tr { break-inside: avoid; page-break-inside: avoid; }
+table.code td { vertical-align: top; padding: 0; }
+td.num {
+  width: 9mm;
+  text-align: right;
+  padding-right: 2.5mm !important;
+  color: #888;
+  font-size: 6.800000000000001pt;
+  border-right: .4pt solid #bbb;
+}
+td.line { padding-left: 2.5mm !important; }
+td.line .ln { white-space: pre-wrap; overflow-wrap: anywhere; padding-left: 4mm; text-indent: -4mm; }
+pre.plain { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace; font-size: 7.4pt; }
+
+/* Markdown 正文 */
+.md-body { font-size: 9.4pt; line-height: 1.6; }
+.md-body h1, .md-body h2, .md-body h3, .md-body h4, .md-body h5, .md-body h6 {
+  break-after: avoid; page-break-after: avoid; margin: 4mm 0 1.5mm 0; line-height: 1.3;
+}
+.md-body h1 { font-size: 12.9pt; border-bottom: 1pt solid #000; padding-bottom: 1mm; }
+.md-body h2 { font-size: 10.9pt; border-bottom: .5pt solid #999; padding-bottom: .8mm; }
+.md-body h3 { font-size: 9.4pt; }
+.md-body h4, .md-body h5, .md-body h6 { font-size: 9.4pt; }
+.md-body p { margin: 0 0 2mm 0; }
+.md-body ul, .md-body ol { margin: 0 0 2mm 0; padding-left: 6mm; }
+.md-body li { margin: 0 0 .8mm 0; }
+.md-body li > p { margin: 0; }
+.md-body pre {
+  background: #f4f4f4;
+  border: .5pt solid #ccc;
+  border-radius: 1mm;
+  padding: 2mm 2.5mm;
+  margin: 0 0 2.5mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.md-body pre code {
+  font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace;
+  font-size: 7.4pt;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: none;
+  padding: 0;
+}
+.md-body code { font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace; font-size: 7.4pt; background: #ececec; padding: 0 .6mm; }
+.md-body blockquote {
+  margin: 0 0 2.5mm 0;
+  padding: 0 0 0 3mm;
+  border-left: 1.5pt solid #b5b5b5;
+  color: #333;
+}
+.md-body table { border-collapse: collapse; width: 100%; margin: 0 0 2.5mm 0; font-size: 7.4pt; }
+.md-body th, .md-body td { border: .5pt solid #999; padding: 1mm 1.5mm; text-align: left; vertical-align: top; }
+.md-body th { background: #eee; }
+.md-body img { max-width: 100%; }
+.md-body a { color: #000; }
+.md-body hr { border: none; border-top: .5pt solid #999; margin: 3mm 0; }
+.md-body input[type=checkbox] { margin-right: 1mm; }
+
+/* 屏幕预览：一张白纸 + 与打印一致的边距（@page 只在打印时生效） */
+@media screen {
+  html, body { background: #e9e9e9; }
+  body { padding: 10mm 0; }
+  .page {
+    width: 527.24pt;
+    margin: 0 auto;
+    padding: 39.69pt 34.02pt 39.69pt 34.02pt;
+    background: #fff;
+    box-shadow: 0 .3mm 1.2mm rgba(0, 0, 0, .3);
+  }
+}
+@media print {
+  html, body { background: #fff; padding: 0; }
+  .page { width: auto; margin: 0; padding: 0; background: #fff; box-shadow: none; }
+}
+</style></head><body>
+<div class='page'>
+<header class='doc-head'><h1>class_logs.cpp</h1><div class='meta'>1 个文件 · 44 行 · 生成于 2026-10-06 22:29 · 行号对应源文件实际行号</div></header>
+<section class="sheet"><div class="file-head"><span class="name">class_logs.cpp</span><span class="sub">44 行</span></div><table class="code"><tr><td class="num">1</td><td class="line"><div class="ln">#include &lt;iostream&gt;</div></td></tr><tr><td class="num">2</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">3</td><td class="line"><div class="ln">#define LOG(x)                                                                 \</div></td></tr><tr><td class="num">4</td><td class="line"><div class="ln">    std::cout                                                                  \</div></td></tr><tr><td class="num">5</td><td class="line"><div class="ln">        &lt;&lt; x &lt;&lt; std::endl; // define a macro for logging values to the console</div></td></tr><tr><td class="num">6</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">7</td><td class="line"><div class="ln">class LogClass {</div></td></tr><tr><td class="num">8</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">9</td><td class="line"><div class="ln">  public:</div></td></tr><tr><td class="num">10</td><td class="line"><div class="ln">    enum LogLevel { LogLevelError = 0, LogLevelWarning, LogLevelInfo };</div></td></tr><tr><td class="num">11</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">12</td><td class="line"><div class="ln">    void setLevel(LogLevel level) {</div></td></tr><tr><td class="num">13</td><td class="line"><div class="ln">        // Set the log level</div></td></tr><tr><td class="num">14</td><td class="line"><div class="ln">        m_LogLevel = level;</div></td></tr><tr><td class="num">15</td><td class="line"><div class="ln">    }</div></td></tr><tr><td class="num">16</td><td class="line"><div class="ln">    void Error(const char *message) {</div></td></tr><tr><td class="num">17</td><td class="line"><div class="ln">        if (m_LogLevel &gt;= LogLevelError) {</div></td></tr><tr><td class="num">18</td><td class="line"><div class="ln">            LOG(&quot;[Error]: &quot; &lt;&lt; message);</div></td></tr><tr><td class="num">19</td><td class="line"><div class="ln">        }</div></td></tr><tr><td class="num">20</td><td class="line"><div class="ln">    }</div></td></tr><tr><td class="num">21</td><td class="line"><div class="ln">    void Warn(const char *message) {</div></td></tr><tr><td class="num">22</td><td class="line"><div class="ln">        if (m_LogLevel &gt;= LogLevelWarning) {</div></td></tr><tr><td class="num">23</td><td class="line"><div class="ln">            LOG(&quot;[Warning]: &quot; &lt;&lt; message);</div></td></tr><tr><td class="num">24</td><td class="line"><div class="ln">        }</div></td></tr><tr><td class="num">25</td><td class="line"><div class="ln">    }</div></td></tr><tr><td class="num">26</td><td class="line"><div class="ln">    void Info(const char *message) {</div></td></tr><tr><td class="num">27</td><td class="line"><div class="ln">        if (m_LogLevel &gt;= LogLevelInfo) {</div></td></tr><tr><td class="num">28</td><td class="line"><div class="ln">            LOG(&quot;[Info]: &quot; &lt;&lt; message);</div></td></tr><tr><td class="num">29</td><td class="line"><div class="ln">        }</div></td></tr><tr><td class="num">30</td><td class="line"><div class="ln">    }</div></td></tr><tr><td class="num">31</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">32</td><td class="line"><div class="ln">  private:</div></td></tr><tr><td class="num">33</td><td class="line"><div class="ln">    LogLevel m_LogLevel;</div></td></tr><tr><td class="num">34</td><td class="line"><div class="ln">};</div></td></tr><tr><td class="num">35</td><td class="line"><div class="ln">int main() {</div></td></tr><tr><td class="num">36</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">37</td><td class="line"><div class="ln">    LogClass myLog;</div></td></tr><tr><td class="num">38</td><td class="line"><div class="ln">    myLog.setLevel(LogClass::LogLevelWarning);</div></td></tr><tr><td class="num">39</td><td class="line"><div class="ln">    myLog.Error(&quot;This is an error message.&quot;);</div></td></tr><tr><td class="num">40</td><td class="line"><div class="ln">    myLog.Warn(&quot;This is a warning message.&quot;);</div></td></tr><tr><td class="num">41</td><td class="line"><div class="ln">    myLog.Info(&quot;This is an info message.&quot;);</div></td></tr><tr><td class="num">42</td><td class="line"><div class="ln">    std::cin.get();</div></td></tr><tr><td class="num">43</td><td class="line"><div class="ln">    return 0;</div></td></tr><tr><td class="num">44</td><td class="line"><div class="ln">}</div></td></tr></table></section>
+</div>
+</body></html>
