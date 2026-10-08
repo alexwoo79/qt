@@ -1,0 +1,20 @@
+sizeof(Plain)       = 4（int + 填充）
+sizeof(WithVirtual) = 16（int 4 + 填充 4 + vptr 8）
+sizeof(Derived)     = 16（没加成员，只是换掉表里的函数）
+
+WithVirtual     vptr=0x102074010
+    vtable[0] = 0x1020707ec
+    vtable[1] = 0x102070814
+WithVirtual#2   vptr=0x102074010
+    vtable[0] = 0x1020707ec
+    vtable[1] = 0x102070814
+Derived         vptr=0x102074040
+    vtable[0] = 0x102070888
+    vtable[1] = 0x102070814
+→ 同类对象共用同一张表；子类重写后表里的函数地址不同。
+
+对象前 8 字节的原始值（就是 vptr）：1040070201000000
+
+-- 绕过语法，直接按虚表调用（多态的机械本质）--
+WithVirtual::f()
+WithVirtual::g(42)

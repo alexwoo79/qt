@@ -1,0 +1,52 @@
+分配：p=0x6020000000f0 值=7
+已 delete p，但指针变量还在（这就是野指针）
+=================================================================
+==79073==ERROR: AddressSanitizer: heap-use-after-free on address 0x6020000000f0 at pc 0x0001009d4a04 bp 0x00016f42a3b0 sp 0x00016f42a3a8
+READ of size 4 at 0x6020000000f0 thread T0
+    #0 0x0001009d4a00 in main p3_04_use_after_free.cpp:11
+    #1 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+0x6020000000f0 is located 0 bytes inside of 4-byte region [0x6020000000f0,0x6020000000f4)
+freed by thread T0 here:
+    #0 0x00010122c558 in _ZdlPv+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50558)
+    #1 0x0001009d4968 in main p3_04_use_after_free.cpp:8
+    #2 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+previously allocated by thread T0 here:
+    #0 0x00010122c150 in _Znwm+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50150)
+    #1 0x0001009d4870 in main p3_04_use_after_free.cpp:6
+    #2 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+SUMMARY: AddressSanitizer: heap-use-after-free p3_04_use_after_free.cpp:11 in main
+Shadow bytes around the buggy address:
+  0x601ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602000000000: fa fa fd fa fa fa fd fd fa fa fd fd fa fa 00 04
+=>0x602000000080: fa fa 00 06 fa fa 00 fa fa fa 00 00 fa fa[fd]fa
+  0x602000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==79073==ABORTING

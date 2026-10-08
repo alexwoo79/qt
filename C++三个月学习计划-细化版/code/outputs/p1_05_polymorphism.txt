@@ -1,0 +1,21 @@
+&d=0x16b4da480  pb=0x16b4da480  pd=0x16b4da480（单继承下三者地址相同）
+
+-- 虚函数：运行时按对象真实类型查表 --
+Derived::speak()
+Derived::speak()
+
+-- 非虚函数：编译期按指针类型绑定 --
+Base::name()    ← 非虚，看指针的静态类型
+Derived::name() ← 非虚，看指针的静态类型
+
+-- 打印两张不同的虚表 --
+Base 对象 vptr=0x104928068，Derived 对象 vptr=0x104928010
+speak 槽位：Base=0x104924964  Derived=0x1049248e4
+
+-- 虚析构：用基类指针 delete 必须靠它 --
+~Derived()
+~Base()
+（~Base 不是 virtual 时，上面只会打印 ~Base，Derived 的成员就泄漏了）
+~Base()
+~Derived()
+~Base()

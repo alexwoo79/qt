@@ -1,0 +1,13 @@
+sizeof(Empty)        = 1
+sizeof(OneChar)      = 1
+sizeof(CharInt)      = 8   (char 后补 3 字节)
+sizeof(IntChar)      = 8   (尾部再补 3 字节)
+sizeof(HasFunction)  = 1   (成员函数不占对象内存)
+sizeof(HasVirtual)   = 8   (只有一个 vptr)
+
+-- 基础类型（64 位平台）--
+bool=1 char=1 short=2 int=4 long=8 long long=8
+float=4 double=8 long double=8
+int*=8 void*=8 函数指针=8
+
+两个空类对象：0x16ee3249b 与 0x16ee3249a，相差 -1 字节

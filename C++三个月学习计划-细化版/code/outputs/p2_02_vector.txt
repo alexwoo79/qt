@@ -1,0 +1,20 @@
+-- 基本类型：扩容时 size/capacity/地址怎么变 --
+push_back( 0) → size= 1 capacity= 1 data=0x104f59be0  ← 发生重分配
+push_back( 1) → size= 2 capacity= 2 data=0x104f59a70  ← 发生重分配
+push_back( 2) → size= 3 capacity= 4 data=0x104f59be0  ← 发生重分配
+push_back( 4) → size= 5 capacity= 8 data=0x706c00900  ← 发生重分配
+push_back( 8) → size= 9 capacity=16 data=0x104f59a70  ← 发生重分配
+push_back(16) → size=17 capacity=32 data=0x104f59ab0  ← 发生重分配
+容量序列大致是 1,2,4,8,16,32：libc++ 按 2 倍增长，均摊 O(1)。
+
+-- 元素是自定义类型：搬家的代价能被看见 --
+插入 8 个元素后：存活=8 拷贝=0 移动=7
+→ 扩容时用移动（Tracked 有 noexcept 移动构造），拷贝次数为 0 才是合格实现。
+vector 离开作用域后：存活=0（全部析构，没有泄漏）
+
+-- 迭代器/指针失效 --
+扩容前 data=0x104f59be0
+push_back 后 data=0x706c00900，旧指针 已悬空（继续解引用就是 UB，ASan 会抓到）
+reserve 之后 data=0x104f5b040，之前那个指针同样失效
+
+结论：只要发生重分配，所有指向元素的指针/引用/迭代器全部作废。

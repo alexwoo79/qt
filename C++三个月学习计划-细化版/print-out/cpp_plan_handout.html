@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='zh-CN'><head><meta charset='utf-8'>
+<title>C++ 三个月学习计划 · 细化版 + 每周打卡表</title>
+<style>
+@page { size: A4 portrait; margin: 14mm 12mm; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace;
+  font-size: 7.4pt;
+  line-height: 1.5;
+  color: #000;
+  -webkit-print-color-adjust: exact;
+}
+.doc-head { border-bottom: 1.6pt solid #000; padding-bottom: 3mm; margin-bottom: 4mm; }
+.doc-head h1 { font-size: 12.9pt; margin: 0 0 1.5mm 0; letter-spacing: .4pt; }
+.doc-head .meta { font-size: 7.4pt; color: #333; }
+.sheet { break-before: page; page-break-before: always; }
+.sheet:first-of-type { break-before: auto; page-break-before: auto; }
+.file-head {
+  border-bottom: 1pt solid #000;
+  margin: 0 0 2.5mm 0;
+  padding-bottom: 1.5mm;
+  break-after: avoid;
+  page-break-after: avoid;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+.file-head .name { font-size: 10.4pt; font-weight: bold; }
+.file-head .sub { font-size: 7.4pt; color: #444; white-space: nowrap; }
+table.code { border-collapse: collapse; width: 100%; }
+table.code tr { break-inside: avoid; page-break-inside: avoid; }
+table.code td { vertical-align: top; padding: 0; }
+td.num {
+  width: 9mm;
+  text-align: right;
+  padding-right: 2.5mm !important;
+  color: #888;
+  font-size: 6.800000000000001pt;
+  border-right: .4pt solid #bbb;
+}
+td.line { padding-left: 2.5mm !important; }
+td.line .ln { white-space: pre-wrap; overflow-wrap: anywhere; padding-left: 4mm; text-indent: -4mm; }
+pre.plain { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace; font-size: 7.4pt; }
+
+/* 代码注释：汉字用楷体，西文用斜体（注释标记跟着一起变） */
+.cmt {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Kaiti TC", "Songti SC",
+               "Noto Serif CJK SC", "Noto Sans CJK SC", serif;
+}
+/* 西文注释走轻量斜体：Helvetica Neue Light Italic（比等宽斜体瘦），
+   取不到时依次退到 Avenir Next、代码等宽字体、系统无衬线 */
+.cmt i {
+  font-family: "Helvetica Neue", "Avenir Next", "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Markdown 正文 */
+.md-body { font-size: 9.4pt; line-height: 1.6; }
+.md-body h1, .md-body h2, .md-body h3, .md-body h4, .md-body h5, .md-body h6 {
+  break-after: avoid; page-break-after: avoid; margin: 4mm 0 1.5mm 0; line-height: 1.3;
+}
+.md-body h1 { font-size: 12.9pt; border-bottom: 1pt solid #000; padding-bottom: 1mm; }
+.md-body h2 { font-size: 10.9pt; border-bottom: .5pt solid #999; padding-bottom: .8mm; }
+.md-body h3 { font-size: 9.4pt; }
+.md-body h4, .md-body h5, .md-body h6 { font-size: 9.4pt; }
+.md-body p { margin: 0 0 2mm 0; }
+.md-body ul, .md-body ol { margin: 0 0 2mm 0; padding-left: 6mm; }
+.md-body li { margin: 0 0 .8mm 0; }
+.md-body li > p { margin: 0; }
+.md-body pre {
+  background: #f4f4f4;
+  border: .5pt solid #ccc;
+  border-radius: 1mm;
+  padding: 2mm 2.5mm;
+  margin: 0 0 2.5mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.md-body pre code {
+  font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace;
+  font-size: 7.4pt;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: none;
+  padding: 0;
+}
+.md-body code { font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace; font-size: 7.4pt; background: #ececec; padding: 0 .6mm; }
+.md-body blockquote {
+  margin: 0 0 2.5mm 0;
+  padding: 0 0 0 3mm;
+  border-left: 1.5pt solid #b5b5b5;
+  color: #333;
+}
+.md-body table { border-collapse: collapse; width: 100%; margin: 0 0 2.5mm 0; font-size: 7.4pt; }
+.md-body th, .md-body td { border: .5pt solid #999; padding: 1mm 1.5mm; text-align: left; vertical-align: top; }
+.md-body th { background: #eee; }
+.md-body img { max-width: 100%; }
+.md-body a { color: #000; }
+.md-body hr { border: none; border-top: .5pt solid #999; margin: 3mm 0; }
+.md-body input[type=checkbox] { margin-right: 1mm; }
+
+/* 屏幕预览：一张白纸 + 与打印一致的边距（@page 只在打印时生效） */
+@media screen {
+  html, body { background: #e9e9e9; }
+  body { padding: 10mm 0; }
+  .page {
+    width: 527.24pt;
+    margin: 0 auto;
+    padding: 39.69pt 34.02pt 39.69pt 34.02pt;
+    background: #fff;
+    box-shadow: 0 .3mm 1.2mm rgba(0, 0, 0, .3);
+  }
+}
+@media print {
+  html, body { background: #fff; padding: 0; }
+  .page { width: auto; margin: 0; padding: 0; background: #fff; box-shadow: none; }
+}
+</style></head><body>
+<div class='page'>
+<header class='doc-head'><h1>C++ 三个月学习计划 · 细化版 + 每周打卡表</h1><div class='meta'>2 个文件 · 302 行 · 生成于 2026-10-08 19:08 · 行号对应源文件实际行号</div></header>
+<section class="sheet"><div class="md-body"><div class="file-head"><span class="name">00-计划细化版.md</span><span class="sub">Markdown</span></div></div><h1>计划细化版（12 周 · 每天 1 小时）</h1>
+<blockquote>定位不变：<strong>不背概念、不啃厚书、以代码实验为核心</strong>。细化做的是三件事—— ① 每周切到「当天看得见证据」的粒度；② 每周配可运行例题（见 <code>code/</code> 与三份例题讲解）； ③ 每周留一个「回到 WebView 项目」的动作，避免学完不知道往哪用。</blockquote>
+<h2>一、每日 1 小时的固定切法</h2>
+<table><thead><tr><th>时间</th><th>做什么</th><th>注意</th></tr></thead><tbody><tr><td>10 min</td><td>复习昨天结论（凭记忆写三条，不许翻笔记）</td><td>写不出来就说明昨天只是"看过"</td></tr><tr><td>35 min</td><td>跑/改当天例题，<strong>先预测再运行</strong></td><td>预测和实际不符的地方才是今天的收获</td></tr><tr><td>10 min</td><td>记录：结论一句话 + 反例一条 + 存疑一条</td><td>记到当日笔记，D7 汇总</td></tr><tr><td>5 min</td><td>把当天代码跑一遍 <code>-fsanitize=address</code></td><td>让 ASan 变成习惯，不是排错时才用</td></tr></tbody></table>
+<p><strong>每周固定动作（D6–D7）</strong>：把本周例题合成一个小题（自己加一个功能），然后跑 <code>bash code/run_all.sh asan</code> 全绿。</p>
+<h2>二、12 周路线图（周目标 + 例题 + 验收）</h2>
+<h3>第一阶段：内存地基（第 1–2 周）</h3>
+<table><thead><tr><th>周</th><th>主题</th><th>例题</th><th>必须能回答的问题</th></tr></thead><tbody><tr><td>1</td><td>对象大小 / 对齐 / 栈堆</td><td><code>p1_01_sizeof</code> <code>p1_02_layout</code> <code>p1_03_stack_heap</code></td><td>空类为什么是 1 字节？<code>sizeof</code> 为什么和成员顺序有关？栈为什么向低地址长？堆上的地址为什么和栈差很远？</td></tr><tr><td>2</td><td>vptr / 虚表 / 多态</td><td><code>p1_04_vptr</code> <code>p1_05_polymorphism</code></td><td>加 <code>virtual</code> 对象为什么变大 8 字节？同类对象为什么共用一张表？非虚函数为什么"看指针类型"？</td></tr></tbody></table>
+<p><strong>第 1 周细化</strong></p>
+<ul><li>D1 空类与基础类型：先预测 <code>Empty/CharInt/IntChar</code> 的 sizeof，再跑 <code>p1_01</code>；关注 <code>HasFunction</code>（成员函数不占对象内存）。</li><li>D2 对齐与排布：把 <code>LooseLayout</code> 和 <code>TightLayout</code> 的成员顺序互换，预测字节数；用 <code>offsetof</code> 验证。</li><li>D3 字节可视化：自己写一个 <code>hexdump(const void*, size_t)</code>，把成员值手动标到字节序列上。</li><li>D4 栈：在 <code>level()</code> 里再加两层递归，画出地址递减的图；解释"栈是复用"的证据。</li><li>D5 堆与释放：把链表改成数组 <code>new Node[3]</code>，再改成 <code>new Node*[3]</code>，比较三次的地址和释放写法。</li><li>D6 综合小题：写一个 <code>struct</code>，同时含 <code>char/int/double/指针/虚函数</code>，预测 sizeof 并解释每一字节。</li><li>D7 复盘产出：一页笔记（可打印），三条结论 + 一个反例。</li></ul>
+<p><strong>第 2 周细化</strong></p>
+<ul><li>D8 <code>virtual</code> 的代价：对同一个类加/去 <code>virtual</code>，记录 sizeof 变化与 <code>vtable</code> 地址。</li><li>D9 vptr 位置：验证 vptr 在对象最前面（把对象首 8 字节当 <code>void**</code> 读，并与虚表函数地址对照）。</li><li>D10 简单多态：基类指针指向派生类对象，比较 <code>pb-&gt;speak()</code> 与 <code>pb-&gt;name()</code>（虚 vs 非虚）。</li><li>D11 单继承虚表：派生类重写 vs 新增虚函数，观察表槽位是"替换"还是"追加"。</li><li>D12 虚析构：故意去掉 <code>virtual ~Base()</code>，用 <code>-fsanitize=address</code> 跑一次，看它报什么。</li><li>D13 复盘：口述"对象内存布局 → vptr → 虚调用"的完整链条，写成一个 5 步流程图。</li><li>D14 巩固：把 <code>p1_05</code> 改成三个派生类 + 一个工厂函数返回 <code>unique_ptr&lt;Base&gt;</code>（提前预热第 6 周）。</li></ul>
+<h3>第二阶段：所有权与资源（第 3–6 周）</h3>
+<table><thead><tr><th>周</th><th>主题</th><th>例题</th><th>必须能回答的问题</th></tr></thead><tbody><tr><td>3</td><td>string 底层</td><td><code>p2_01_string</code></td><td>SSO 的边界在哪？为什么 <code>reserve</code> 后地址不再变？<code>size</code> 和 <code>capacity</code> 差在哪？</td></tr><tr><td>4</td><td>vector 底层</td><td><code>p2_02_vector</code></td><td>扩容倍数与均摊复杂度？什么时候元素被"移动"而不是"拷贝"？迭代器为什么失效？</td></tr><tr><td>5</td><td>RAII</td><td><code>p2_03_raii</code></td><td>为什么异常路径也能释放？为什么禁止拷贝、只允许移动？析构顺序为什么是逆序？</td></tr><tr><td>6</td><td>智能指针</td><td><code>p2_04_unique_ptr</code> <code>p2_05_shared_ptr</code></td><td>move 后源指针为什么变空？循环引用为什么泄漏？<code>weak_ptr</code> 凭什么破环？</td></tr></tbody></table>
+<p>每周的 7 天都按同一模板走：<strong>D1 观察现象 → D2 找出规则 → D3 看底层数据（容量/计数/地址）→ D4 复现一个坑 → D5 对照 Rust → D6 改造例题 → D7 复盘打印</strong>。</p>
+<p>本周专属要求：</p>
+<ul><li>第 3 周：把 <code>p2_01</code> 的 SSO 边界从 22 改成"你自己的编译器实测值"，写清依据。</li><li>第 4 周：给 <code>Tracked</code> 去掉 <code>noexcept</code> 的移动构造，观察拷贝次数变化——这是"移动语义为什么要求 noexcept"的直接证据。</li><li>第 5 周：给 <code>Buffer</code> 加一个 <code>swap</code>，解释为什么移动赋值通常用 swap 实现。</li><li>第 6 周：把 <code>p2_05</code> 的循环引用用 ASan 跑一次，亲眼看它报 leak；再用 <code>weak_ptr</code> 修好。</li></ul>
+<h3>第三阶段：多态边界 + 排坑 + 项目（第 7–12 周）</h3>
+<table><thead><tr><th>周</th><th>主题</th><th>例题</th><th>必须能回答的问题</th></tr></thead><tbody><tr><td>7</td><td>多继承布局</td><td><code>p3_01_multi_inherit</code></td><td>为什么一个对象有两个 vptr？<code>static_cast</code> 和 <code>reinterpret_cast</code> 差在哪？</td></tr><tr><td>8</td><td>虚继承</td><td><code>p3_02_virtual_inherit</code></td><td>菱形继承为什么有两份基类？虚继承多出来的指针是什么？</td></tr><tr><td>9</td><td>内存错误现场</td><td><code>p3_03_overflow</code> <code>p3_04_use_after_free</code> <code>p3_05_double_free</code></td><td>ASan 三类报告的读法：越界 / 释放后使用 / 重复释放</td></tr><tr><td>10</td><td>排坑方法</td><td><code>p3_07_diagnose</code> + 自造例题</td><td>不看调试器，靠地址与字节对比把问题缩小到一行</td></tr><tr><td>11–12</td><td>综合项目</td><td><code>p3_06_project</code></td><td>多态 + 容器 + 智能指针 + 文件 + RAII 如何组装成一个零泄漏程序</td></tr></tbody></table>
+<p>第 11–12 周的落地任务：把 <code>p3_06_project</code> 的 <code>Student</code> 换成你 WebView 项目里的真实领域对象（例如"文档/图层/任务"），保持同样的结构：</p>
+<pre><code class="language-text">基类（纯虚接口 + 虚析构）
+  └─ 派生类（不同算法/不同平台实现）
+容器：std::vector&lt;std::unique_ptr&lt;Base&gt;&gt;
+边界：工厂函数负责创建，返回 unique_ptr（所有权清晰）
+持久化：fstream（RAII）或平台文件 API 包一层 RAII
+验证：ASan 全绿 + 退出码 0</code></pre>
+<h2>三、工具速查（本机命令）</h2>
+<pre><code class="language-bash"># 编译（带调试信息、关优化，便于看地址与变量）
+clang++ -std=c++17 -g -O0 -Wall p1_04_vptr.cpp -o /tmp/demo
+
+# 内存检查三件套
+clang++ -std=c++17 -g -O0 -fsanitize=address demo.cpp -o demo_asan     # 越界/UAF/重复释放
+clang++ -std=c++17 -g -O0 -fsanitize=undefined demo.cpp -o demo_ubsan  # 未定义行为
+ASAN_OPTIONS=abort_on_error=0 ./demo_asan                              # macOS 上不支持 detect_leaks
+
+# 看符号、看大小、看段
+nm -C demo | head            # 列出符号（-C 还原 C++ 名字）
+size -m demo                 # 各段大小
+otool -l demo | grep -A3 LC_MAIN
+c++filt _Znam                # 手写名字还原：operator new[]
+
+# 调试
+lldb ./demo                  # b main / r / frame variable / memory read -c 16 &amp;obj</code></pre>
+<h2>四、验收标准（每周都问自己）</h2>
+<ol><li><strong>能预测</strong>：看一段新代码，能先说出 sizeof / 是否泄漏 / 会不会崩，再运行验证。</li><li><strong>能复现</strong>：每个结论都能用一个 20 行以内的小程序重现。</li><li><strong>能口述</strong>：用"内存/所有权/生命周期"三个词讲清楚，而不是背术语。</li><li><strong>能回收</strong>：把结论落回 WebView 项目的一处具体代码（哪怕只是加一个 RAII 守卫）。</li></ol>
+<h2>五、反模式清单（出现就停下来）</h2>
+<ul><li>只看不跑：没有输出的"学习"不算学习。</li><li>只跑不改：每题的"动手改一改"至少做一条。</li><li>用 ASan 当排错工具而不是日常习惯。</li><li>提前钻模板元编程、<code>constexpr</code> 细节——12 周计划里它们不是主线。</li><li>用 <code>reinterpret_cast</code> 掩盖类型问题（例题 3-1 会演示它的后果）。</li><li>记住"结论"却说不出现象：结论必须挂在你亲眼见过的输出上。</li></ul></section>
+<section class="sheet"><div class="md-body"><div class="file-head"><span class="name">04-每周打卡表.md</span><span class="sub">Markdown</span></div></div><h1>每周打卡表（12 周）</h1>
+<blockquote>用法：每天 1 小时，做完打勾；「关键结论」一栏<strong>用自己的话写</strong>，写不出来说明当天只是看过。 每周 D7 把三件事汇总成一段：今天最反直觉的一条 + 一个反例 + 一个存疑点。</blockquote>
+<h2>第 1 周 · 对象大小 / 对齐 / 栈堆</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D1</td><td>例题 1-1：先预测 <code>Empty/CharInt/IntChar</code> 的 sizeof，再跑</td><td>☐</td><td></td></tr><tr><td>D2</td><td>例题 1-2：交换 <code>Loose/Tight</code> 成员顺序，用 <code>offsetof</code> 验证</td><td>☐</td><td></td></tr><tr><td>D3</td><td>自己写 <code>hexdump()</code>，把成员值标到字节序列上</td><td>☐</td><td></td></tr><tr><td>D4</td><td>例题 1-3：<code>level()</code> 再加两层，画地址递减图</td><td>☐</td><td></td></tr><tr><td>D5</td><td>例题 1-3：<code>new Node[3]</code> vs <code>new Node*[3]</code>，对比释放写法</td><td>☐</td><td></td></tr><tr><td>D6</td><td>综合：写一个含 char/int/double/指针/虚函数的 struct，逐字节解释</td><td>☐</td><td></td></tr><tr><td>D7</td><td>复盘：三条结论 + 一个反例，出打印稿</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：为什么 <code>{ double d; char c; }</code> 是 16 不是 9？栈为什么向低地址长？</p>
+<h2>第 2 周 · vptr / 虚表 / 多态</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D8</td><td>例题 1-4：加/去 <code>virtual</code>，记录 sizeof 与虚表地址</td><td>☐</td><td></td></tr><tr><td>D9</td><td>把对象首 8 字节当 <code>void**</code> 读，与虚表函数地址对照</td><td>☐</td><td></td></tr><tr><td>D10</td><td>例题 1-5：<code>pb-&gt;speak()</code> 与 <code>pb-&gt;name()</code> 为什么不同</td><td>☐</td><td></td></tr><tr><td>D11</td><td>派生类重写 vs 新增虚函数，看表槽位是替换还是追加</td><td>☐</td><td></td></tr><tr><td>D12</td><td>删掉 <code>virtual ~Base()</code>，用 ASan 跑一次看报错</td><td>☐</td><td></td></tr><tr><td>D13</td><td>口述「布局 → vptr → 虚调用」五步链条并写下来</td><td>☐</td><td></td></tr><tr><td>D14</td><td>三个派生类 + 工厂返回 <code>unique_ptr&lt;Base&gt;</code>（预热第 6 周）</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：加一个虚函数为什么让所有同类对象一起变大？非虚函数"看指针类型"是什么意思？</p>
+<h2>第 3 周 · string 底层</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D15</td><td>例题 2-1：打印 <code>size/capacity/data</code>，判断数据在对象内还是堆上</td><td>☐</td><td></td></tr><tr><td>D16</td><td>实测 SSO 边界（本机 22 字符），写清判断依据</td><td>☐</td><td></td></tr><tr><td>D17</td><td>记录第 23 个字符时容量与地址各怎么跳</td><td>☐</td><td></td></tr><tr><td>D18</td><td><code>reserve(64)</code> 后连续 append，对比地址是否变化</td><td>☐</td><td></td></tr><tr><td>D19</td><td>对照 Rust <code>String</code>：三件套、<code>reserve</code>、借用检查差别</td><td>☐</td><td></td></tr><tr><td>D20</td><td>改造例题：统计 1000 次 append 一共分配了几次</td><td>☐</td><td></td></tr><tr><td>D21</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：<code>s.c_str()</code> 之后 append 一次，之前的指针为什么可能失效？</p>
+<h2>第 4 周 · vector 底层</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D22</td><td>例题 2-2：记录完整容量序列，验证 2 倍增长</td><td>☐</td><td></td></tr><tr><td>D23</td><td>观察地址"绕回来"现象，说明为什么不能靠地址判断同一数组</td><td>☐</td><td></td></tr><tr><td>D24</td><td><code>Tracked</code> 的拷贝/移动计数：为什么是 拷贝=0 移动=7</td><td>☐</td><td></td></tr><tr><td>D25</td><td>去掉移动构造 <code>noexcept</code>，对比计数变化</td><td>☐</td><td></td></tr><tr><td>D26</td><td>复现迭代器失效：扩容/<code>reserve</code> 后旧指针作废</td><td>☐</td><td></td></tr><tr><td>D27</td><td>用 <code>reserve</code> 把多次分配压成一次，记录前后差异</td><td>☐</td><td></td></tr><tr><td>D28</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：均摊 O(1) 是什么意思？哪些操作会让迭代器失效？</p>
+<h2>第 5 周 · RAII</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D29</td><td>例题 2-3：验证析构顺序是构造的逆序</td><td>☐</td><td></td></tr><tr><td>D30</td><td>异常路径：<code>throw</code> 后账本为什么仍然归零</td><td>☐</td><td></td></tr><tr><td>D31</td><td>禁止拷贝 + 实现移动，说明各自解决什么问题</td><td>☐</td><td></td></tr><tr><td>D32</td><td>放进 <code>vector</code> 触发扩容，确认只发生移动</td><td>☐</td><td></td></tr><tr><td>D33</td><td>加 <code>swap</code>，用 swap 实现移动赋值</td><td>☐</td><td></td></tr><tr><td>D34</td><td>用 ASan 跑 RAII 版本，确认零报错</td><td>☐</td><td></td></tr><tr><td>D35</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：为什么 <code>Buffer(const Buffer&amp;) = delete;</code> 比"小心使用拷贝构造"更安全？</p>
+<h2>第 6 周 · 智能指针</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D36</td><td>例题 2-4：<code>make_unique</code> + 作用域自动释放</td><td>☐</td><td></td></tr><tr><td>D37</td><td>move 前后打印 <code>get()</code>，解释源指针为什么变空</td><td>☐</td><td></td></tr><tr><td>D38</td><td>三种传参：按值（交所有权）/ const 引用（借用）/ 移动</td><td>☐</td><td></td></tr><tr><td>D39</td><td>例题 2-5：记录 use_count 的每一次变化</td><td>☐</td><td></td></tr><tr><td>D40</td><td>制造循环引用，用 ASan 看泄漏报告</td><td>☐</td><td></td></tr><tr><td>D41</td><td>用 <code>weak_ptr</code> 破环，确认析构恢复</td><td>☐</td><td></td></tr><tr><td>D42</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：什么时候 <code>shared_ptr</code> 反而比 <code>unique_ptr</code> 危险？</p>
+<h2>第 7 周 · 多继承布局</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D43</td><td>例题 3-1：sizeof 与两个 vptr 的由来</td><td>☐</td><td></td></tr><tr><td>D44</td><td>打印 <code>pc/pa/pb</code> 三个地址，量出偏移</td><td>☐</td><td></td></tr><tr><td>D45</td><td>对比 <code>static_cast</code> / <code>reinterpret_cast</code> / <code>dynamic_cast</code></td><td>☐</td><td></td></tr><tr><td>D46</td><td>用基类指针 delete，验证虚析构的必要性</td><td>☐</td><td></td></tr><tr><td>D47</td><td>设计一个"多能力接口"组合（文件 / 剪贴板 / 窗口）</td><td>☐</td><td></td></tr><tr><td>D48</td><td>把该接口用到你的项目类上，记录指针调整点</td><td>☐</td><td></td></tr><tr><td>D49</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：为什么不能把 <code>A*</code> 用 <code>reinterpret_cast</code> 转成 <code>B*</code>？</p>
+<h2>第 8 周 · 虚继承</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D50</td><td>例题 3-2：菱形的两份 Base 数据，分别在哪个地址</td><td>☐</td><td></td></tr><tr><td>D51</td><td>写 <code>d.value</code> 触发二义性，记录编译器报错原文</td><td>☐</td><td></td></tr><tr><td>D52</td><td>改成虚继承，观察 sizeof 变化与唯一一份 Base</td><td>☐</td><td></td></tr><tr><td>D53</td><td>用 <code>dynamic_cast</code> 跨类转换，验证两条路径拿到同一地址</td><td>☐</td><td></td></tr><tr><td>D54</td><td>设计"共享上下文"（配置/日志）只保留一份</td><td>☐</td><td></td></tr><tr><td>D55</td><td>改造例题：去掉 <code>override</code> 看报错，理解重写约束</td><td>☐</td><td></td></tr><tr><td>D56</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：虚继承多出来的那个指针是干什么用的？它和虚函数是什么关系？</p>
+<h2>第 9 周 · 内存错误现场（ASan）</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D57</td><td>例题 3-3：堆越界写，读 ASan 报告第一行与 <code>allocated by</code></td><td>☐</td><td></td></tr><tr><td>D58</td><td>例题 3-4：释放后使用，读 <code>freed by</code> 定位释放点</td><td>☐</td><td></td></tr><tr><td>D59</td><td>例题 3-5：重复释放，对比两次释放的调用栈行号</td><td>☐</td><td></td></tr><tr><td>D60</td><td>总结报告三要素：错误类型 / 地址 / 谁分配谁释放</td><td>☐</td><td></td></tr><tr><td>D61</td><td>修法练习：置空、RAII、<code>unique_ptr</code> 各修一遍</td><td>☐</td><td></td></tr><tr><td>D62</td><td>给项目开着 ASan 跑一遍完整流程</td><td>☐</td><td></td></tr><tr><td>D63</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：<code>heap-buffer-overflow</code> 与 <code>heap-use-after-free</code> 分别对应哪种代码动作？</p>
+<h2>第 10 周 · 排坑方法</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D64</td><td>例题 3-7：对象切片、悬空引用、扩容失效三个现场</td><td>☐</td><td></td></tr><tr><td>D65</td><td>把每个现场压成 20 行以内的最小复现</td><td>☐</td><td></td></tr><tr><td>D66</td><td>列出你的"观测清单"（地址 / sizeof / vptr / size/capacity）</td><td>☐</td><td></td></tr><tr><td>D67</td><td>用 hexdump 对比正常与异常路径的字节差异</td><td>☐</td><td></td></tr><tr><td>D68</td><td>自己造一个 bug 并只靠打印定位</td><td>☐</td><td></td></tr><tr><td>D69</td><td>加 <code>-fsanitize=undefined</code> 跑一遍，收集新发现</td><td>☐</td><td></td></tr><tr><td>D70</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：为什么"对象切片"不崩溃却很危险？最快的发现信号是什么？</p>
+<h2>第 11 周 · 综合项目（上）</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D71</td><td>跑通例题 3-6，通读三处设计（接口/所有权/持久化）</td><td>☐</td><td></td></tr><tr><td>D72</td><td>把 <code>Student</code> 换成你项目的真实领域对象</td><td>☐</td><td></td></tr><tr><td>D73</td><td>加 <code>virtual std::string toJson() const</code></td><td>☐</td><td></td></tr><tr><td>D74</td><td>文件读写：批量导入 + 生成报告</td><td>☐</td><td></td></tr><tr><td>D75</td><td>ASan 全绿，退出码 0</td><td>☐</td><td></td></tr><tr><td>D76</td><td>写一页"内存视角说明"：谁在栈、谁在堆、谁拥有</td><td>☐</td><td></td></tr><tr><td>D77</td><td>复盘 + 打印</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：为什么 <code>GradeBook</code> 不需要自己写析构函数？</p>
+<h2>第 12 周 · 收口</h2>
+<table><thead><tr><th>日</th><th>任务</th><th>完成</th><th>关键结论（自己写）</th></tr></thead><tbody><tr><td>D78</td><td>端到端跑通：宿主 C++ + Web 前端 + 数据读写</td><td>☐</td><td></td></tr><tr><td>D79</td><td>写清跨边界的所有权约定（字符串/数组/回调各一条）</td><td>☐</td><td></td></tr><tr><td>D80</td><td>边界用例：空数据、超大输入、异常路径</td><td>☐</td><td></td></tr><tr><td>D81</td><td>性能观察：reserve / move / 传参方式的实际差异</td><td>☐</td><td></td></tr><tr><td>D82</td><td>代码复盘：把所有 <code>.get()</code>、裸 <code>new</code>、<code>reinterpret_cast</code> 过一遍</td><td>☐</td><td></td></tr><tr><td>D83</td><td>输出三个月总结报告（含 12 周结论）</td><td>☐</td><td></td></tr><tr><td>D84</td><td>总复盘：这份计划哪几周要重做，下一阶段学什么</td><td>☐</td><td></td></tr></tbody></table>
+<p><strong>验收</strong>：能不能用"内存 / 所有权 / 生命周期"三个词，讲清你项目里任意一个模块？</p>
+<h2>通用备注（每周可复制）</h2>
+<table><thead><tr><th>项目</th><th>记录</th></tr></thead><tbody><tr><td>本周最反直觉的一条</td><td></td></tr><tr><td>本周踩到的坑 + 最小复现</td><td></td></tr><tr><td>存疑待查</td><td></td></tr><tr><td>回到项目做了什么</td><td></td></tr></tbody></table></section>
+</div>
+</body></html>

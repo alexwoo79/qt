@@ -1,0 +1,32 @@
+-- 构造与自动释放 --
+  构造 Resource(1)
+  observe 里看到的 id=1（所有权还在调用方）
+  离开作用域 → 自动 delete
+  析构 Resource(1)
+
+-- 移动：所有权转移，源指针变空（Rust 的 move 同款语义）--
+  构造 Resource(2)
+  move 前 owner=0x105571b00
+  move 后 owner=0x0（空） thief=0x105571b00
+  对空 unique_ptr 解引用是 UB，只能先判空。
+  析构 Resource(2)
+
+-- 传参把所有权交出去 --
+  构造 Resource(3)
+  consume 里看到的 id=3
+  析构 Resource(3)
+
+-- 放进容器：只移动，指针稳定 --
+  构造 Resource(4)
+  构造 Resource(5)
+  构造 Resource(6)
+  容器里 3 个对象，析构顺序与构造相反：
+  析构 Resource(6)
+  析构 Resource(5)
+  析构 Resource(4)
+
+-- 数组形式与自定义删除器 --
+  unique_ptr<int[]> arr[0]=42（析构用 delete[]）
+  自定义删除器：FILE* = 已打开
+
+全部作用域结束，所有资源都已释放。

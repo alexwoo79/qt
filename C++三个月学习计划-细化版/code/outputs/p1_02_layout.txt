@@ -1,0 +1,15 @@
+sizeof(LooseLayout) = 24
+  offsetof c=0 d=8 i=16
+sizeof(TightLayout) = 16
+  offsetof d=0 i=8 c=12
+同样的三个成员，顺序不同差了 8 字节。
+
+LooseLayout  (24 字节): aa 00 00 00 00 00 00 00 00 00 00 00 00 00 f0 3f 44 33 22 11 00 00 00 00 
+  → 0xAA 后面的 7 个 0 是填充，int 落在偏移 16。
+TightLayout  (16 字节): 00 00 00 00 00 00 f0 3f 44 33 22 11 aa 00 00 00 
+  → 填充被挤到尾部，只剩 3 字节。
+
+sizeof(std::string) = 24（libc++ 固定 24 字节）
+sizeof(WithString)  = 40  offsetof(s)=8 offsetof(c)=32
+WithString   (40 字节): 01 00 00 00 01 00 00 00 61 62 63 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 78 a6 7e 6f 01 00 00 00 
+  → 前 4 字节是 i，3 字节填充，再往后 24 字节是 string 本体。

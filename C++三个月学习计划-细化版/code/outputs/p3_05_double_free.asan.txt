@@ -1,0 +1,24 @@
+-- 正面：所有权写进类型里，就没有第二次释放的机会 --
+  unique_ptr 管着 2，作用域结束自动释放一次
+  离开作用域，资源恰好释放一次。
+
+-- 反面：裸指针 delete 两次 --
+=================================================================
+==79079==ERROR: AddressSanitizer: attempting double-free on 0x602000000110 in thread T0:
+    #0 0x0001011d4558 in _ZdlPv+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50558)
+    #1 0x00010081cbcc in main p3_05_double_free.cpp:19
+    #2 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+0x602000000110 is located 0 bytes inside of 4-byte region [0x602000000110,0x602000000114)
+freed by thread T0 here:
+    #0 0x0001011d4558 in _ZdlPv+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50558)
+    #1 0x00010081cb70 in main p3_05_double_free.cpp:17
+    #2 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+previously allocated by thread T0 here:
+    #0 0x0001011d4150 in _Znwm+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50150)
+    #1 0x00010081caec in main p3_05_double_free.cpp:16
+    #2 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+SUMMARY: AddressSanitizer: double-free p3_05_double_free.cpp:19 in main
+==79079==ABORTING

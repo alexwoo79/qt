@@ -1,0 +1,24 @@
+[引用计数变化]
+  构造 Node(1)
+  make_shared 后 use_count=1
+  拷贝一份后 use_count=2
+  副本销毁后 use_count=1
+  move 之后：源=空，新=1
+  析构 Node(1)
+
+[循环引用：两个 shared_ptr 互指 → 谁都释放不了]
+  构造 Node(2)
+  构造 Node(3)
+  离开作用域前：use_count x=2 y=2
+  → 你会看到下面没有析构输出，说明对象泄漏了（ASan 能抓到）
+  （上面没有 Node(2)/Node(3) 的析构 —— 计数永远不归零）
+
+[用 weak_ptr 破环：back 只是观察者]
+  构造 Node(4)
+  构造 Node(5)
+  离开作用域前：x.use_count=1 y.use_count=2
+  弱引用能临时提升为强引用，看到 Node(4)
+  析构 Node(4)
+  析构 Node(5)
+
+Node(4)/Node(5) 会在离开作用域时正常析构。

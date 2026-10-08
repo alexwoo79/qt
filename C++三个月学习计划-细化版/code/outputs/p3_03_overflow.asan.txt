@@ -1,0 +1,47 @@
+正常写完 4 个元素：arr[3]=3
+下面故意越界写 arr[4]……
+=================================================================
+==79046==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000100 at pc 0x0001025eca2c bp 0x00016d8123b0 sp 0x00016d8123a8
+WRITE of size 4 at 0x602000000100 thread T0
+    #0 0x0001025eca28 in main p3_03_overflow.cpp:11
+    #1 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+0x602000000100 is located 0 bytes after 16-byte region [0x6020000000f0,0x602000000100)
+allocated by thread T0 here:
+    #0 0x000102c8c268 in _Znam+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50268)
+    #1 0x0001025ec870 in main p3_03_overflow.cpp:6
+    #2 0x0001840684e0 in start+0x1b4c (dyld:arm64e+0x204e0)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow p3_03_overflow.cpp:11 in main
+Shadow bytes around the buggy address:
+  0x601ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x601fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x602000000000: fa fa fd fa fa fa fd fd fa fa fd fd fa fa 00 04
+  0x602000000080: fa fa 00 06 fa fa 00 fa fa fa 00 00 fa fa 00 00
+=>0x602000000100:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000300: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x602000000380: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==79046==ABORTING

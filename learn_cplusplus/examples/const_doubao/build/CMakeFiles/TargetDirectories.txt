@@ -1,0 +1,3 @@
+/Users/alex/Documents/github/qt/learn_cplusplus/examples/const_doubao/build/CMakeFiles/const_doubao.dir
+/Users/alex/Documents/github/qt/learn_cplusplus/examples/const_doubao/build/CMakeFiles/edit_cache.dir
+/Users/alex/Documents/github/qt/learn_cplusplus/examples/const_doubao/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,36 @@
+sizeof(Regular)=40 sizeof(Honors)=40 sizeof(Makeup)=40（都含 vptr）
+
+-- 构建名册 --
+  构造 Tom      对象 @ 0x102ee5b40
+  构造 Jerry    对象 @ 0x102ee59d0
+  构造 Spike    对象 @ 0x102ee5a10
+
+-- 名册（按对象真实类型多态求值）--
+  Tom      优等生 卷面  85.0 → 总评  97.7
+  Jerry    普通生 卷面  78.0 → 总评  78.0
+  Spike    补考生 卷面  60.0 → 总评  54.0
+  平均总评 = 76.58
+  首个对象的 vptr = 0x102a24010（基类指针 + 虚表 → 多态的机械本质）
+
+-- 持久化（ofstream RAII，无需手动 close）--
+  保存到 /tmp/cpp_gradebook.txt：成功
+
+-- 读回来（工厂 + unique_ptr 重新建对象）--
+  构造 Tom      对象 @ 0x102ee7090
+  构造 Jerry    对象 @ 0x102ee70c0
+  构造 Spike    对象 @ 0x102ee70f0
+
+-- 名册（按对象真实类型多态求值）--
+  Tom      优等生 卷面  85.0 → 总评  97.7
+  Jerry    普通生 卷面  78.0 → 总评  78.0
+  Spike    补考生 卷面  60.0 → 总评  54.0
+  平均总评 = 76.58
+  首个对象的 vptr = 0x102a24010（基类指针 + 虚表 → 多态的机械本质）
+  析构 Spike    @ 0x102ee70f0
+  析构 Jerry    @ 0x102ee70c0
+  析构 Tom      @ 0x102ee7090
+  析构 Spike    @ 0x102ee5a10
+  析构 Jerry    @ 0x102ee59d0
+  析构 Tom      @ 0x102ee5b40
+
+所有对象已按构造的逆序释放，没有裸 new/delete，也没有泄漏。

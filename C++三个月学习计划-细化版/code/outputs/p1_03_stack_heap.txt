@@ -1,0 +1,28 @@
+-- 栈：向低地址方向增长 --
+level(0): 栈变量 &local = 0x16f4ca3e8
+level(1): 栈变量 &local = 0x16f4ca3b8
+level(2): 栈变量 &local = 0x16f4ca388
+level(3): 栈变量 &local = 0x16f4ca358
+g_counter（全局/静态区）地址 = 0x10093c000
+
+-- 同一函数里的局部变量 --
+&a=0x16f4ca468 &b=0x16f4ca464 &c=0x16f4ca460（地址不保证连续）
+arr[0] 值=0 地址=0x16f4ca470（同一数组内连续，步长 4）
+arr[1] 值=1 地址=0x16f4ca474（同一数组内连续，步长 4）
+arr[2] 值=2 地址=0x16f4ca478（同一数组内连续，步长 4）
+arr[3] 值=3 地址=0x16f4ca47c（同一数组内连续，步长 4）
+
+-- 堆：地址由分配器决定，通常与栈相距很远 --
+new Node{value=0} → 堆地址 0x100eadba0
+new Node{value=1} → 堆地址 0x100eadbb0
+new Node{value=2} → 堆地址 0x100eada10
+头指针 head 本身在栈上：&head=0x16f4ca450（8 字节），指向堆上的节点
+
+-- 生命周期 --
+作用域内的 scoped 在 0x16f4ca43c
+作用域外的 reused 在 0x16f4ca438（地址常被复用，说明栈空间是重复利用的）
+
+-- 释放：栈自动，堆手动 --
+delete 堆节点 0x100eada10（值 2）
+delete 堆节点 0x100eadbb0（值 1）
+delete 堆节点 0x100eadba0（值 0）

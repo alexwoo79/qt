@@ -1,0 +1,20 @@
+sizeof(std::string) = 24（libc++：指针/长度/容量 24 字节，SSO 缓冲嵌在里面）
+
+短字符串 size= 2 capacity=22 data=0x16f0e6470 SSO=内部缓冲
+20 字符  size=20 capacity=22 data=0x16f0e6458 SSO=内部缓冲
+31 字符  size=31 capacity=31 data=0x101645b60 SSO=堆上
+→ libc++ 的 SSO 上限是 22 个字符：不超过就放在对象内部，不碰堆。
+
+-- 逐步增长，看容量怎么跳 --
+长度  1：capacity=22 data=0x16f0e6418
+长度  2：capacity=22 data=0x16f0e6418
+长度  3：capacity=22 data=0x16f0e6418
+长度  4：capacity=22 data=0x16f0e6418
+长度 21：capacity=22 data=0x16f0e6418
+长度 22：capacity=22 data=0x16f0e6418
+长度 23：capacity=47 data=0x101645a10  ← 已经在堆上了
+长度 24：capacity=47 data=0x101645a10  ← 已经在堆上了
+长度 40：capacity=47 data=0x101645a10  ← 已经在堆上了
+
+-- 扩容会重新分配 + 拷贝，预留容量可避免 --
+reserve(64) 后：capacity=71 追加 40 次，data 地址没变（一次分配搞定）

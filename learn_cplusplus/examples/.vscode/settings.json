@@ -4,6 +4,11 @@
     "C_Cpp.default.cppStandard": "c++23",
     "C_Cpp.default.cStandard": "c17",
     "C_Cpp.clang_format_style": "file",
+    "code-runner.executorMap": {
+        "cpp": "cd \"$dir\" && g++ -std=c++23 \"$fileName\" -o \"$fileNameWithoutExt\" && ./\"$fileNameWithoutExt\""
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.saveFileBeforeRun": true,
     "[cpp]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "ms-vscode.cpptools"

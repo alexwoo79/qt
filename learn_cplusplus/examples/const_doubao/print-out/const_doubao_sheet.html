@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang='zh-CN'><head><meta charset='utf-8'>
+<title>const_doubao 源码</title>
+<style>
+@page { size: A4 portrait; margin: 14mm 12mm; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace;
+  font-size: 7.4pt;
+  line-height: 1.5;
+  color: #000;
+  -webkit-print-color-adjust: exact;
+}
+.doc-head { border-bottom: 1.6pt solid #000; padding-bottom: 3mm; margin-bottom: 4mm; }
+.doc-head h1 { font-size: 12.9pt; margin: 0 0 1.5mm 0; letter-spacing: .4pt; }
+.doc-head .meta { font-size: 7.4pt; color: #333; }
+.sheet { break-before: page; page-break-before: always; }
+.sheet:first-of-type { break-before: auto; page-break-before: auto; }
+.file-head {
+  border-bottom: 1pt solid #000;
+  margin: 0 0 2.5mm 0;
+  padding-bottom: 1.5mm;
+  break-after: avoid;
+  page-break-after: avoid;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+}
+.file-head .name { font-size: 10.4pt; font-weight: bold; }
+.file-head .sub { font-size: 7.4pt; color: #444; white-space: nowrap; }
+table.code { border-collapse: collapse; width: 100%; }
+table.code tr { break-inside: avoid; page-break-inside: avoid; }
+table.code td { vertical-align: top; padding: 0; }
+td.num {
+  width: 9mm;
+  text-align: right;
+  padding-right: 2.5mm !important;
+  color: #888;
+  font-size: 6.800000000000001pt;
+  border-right: .4pt solid #bbb;
+}
+td.line { padding-left: 2.5mm !important; }
+td.line .ln { white-space: pre-wrap; overflow-wrap: anywhere; padding-left: 4mm; text-indent: -4mm; }
+pre.plain { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace; font-size: 7.4pt; }
+
+/* 代码注释：汉字用楷体，西文用斜体（注释标记跟着一起变） */
+.cmt {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Kaiti TC", "Songti SC",
+               "Noto Serif CJK SC", "Noto Sans CJK SC", serif;
+}
+/* 西文注释走轻量斜体：Helvetica Neue Light Italic（比等宽斜体瘦），
+   取不到时依次退到 Avenir Next、代码等宽字体、系统无衬线 */
+.cmt i {
+  font-family: "Helvetica Neue", "Avenir Next", "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Markdown 正文 */
+.md-body { font-size: 9.4pt; line-height: 1.6; }
+.md-body h1, .md-body h2, .md-body h3, .md-body h4, .md-body h5, .md-body h6 {
+  break-after: avoid; page-break-after: avoid; margin: 4mm 0 1.5mm 0; line-height: 1.3;
+}
+.md-body h1 { font-size: 12.9pt; border-bottom: 1pt solid #000; padding-bottom: 1mm; }
+.md-body h2 { font-size: 10.9pt; border-bottom: .5pt solid #999; padding-bottom: .8mm; }
+.md-body h3 { font-size: 9.4pt; }
+.md-body h4, .md-body h5, .md-body h6 { font-size: 9.4pt; }
+.md-body p { margin: 0 0 2mm 0; }
+.md-body ul, .md-body ol { margin: 0 0 2mm 0; padding-left: 6mm; }
+.md-body li { margin: 0 0 .8mm 0; }
+.md-body li > p { margin: 0; }
+.md-body pre {
+  background: #f4f4f4;
+  border: .5pt solid #ccc;
+  border-radius: 1mm;
+  padding: 2mm 2.5mm;
+  margin: 0 0 2.5mm 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.md-body pre code {
+  font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace;
+  font-size: 7.4pt;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: none;
+  padding: 0;
+}
+.md-body code { font-family: "SF Mono", Menlo, "PingFang SC", "Songti SC", monospace; font-size: 7.4pt; background: #ececec; padding: 0 .6mm; }
+.md-body blockquote {
+  margin: 0 0 2.5mm 0;
+  padding: 0 0 0 3mm;
+  border-left: 1.5pt solid #b5b5b5;
+  color: #333;
+}
+.md-body table { border-collapse: collapse; width: 100%; margin: 0 0 2.5mm 0; font-size: 7.4pt; }
+.md-body th, .md-body td { border: .5pt solid #999; padding: 1mm 1.5mm; text-align: left; vertical-align: top; }
+.md-body th { background: #eee; }
+.md-body img { max-width: 100%; }
+.md-body a { color: #000; }
+.md-body hr { border: none; border-top: .5pt solid #999; margin: 3mm 0; }
+.md-body input[type=checkbox] { margin-right: 1mm; }
+
+/* 屏幕预览：一张白纸 + 与打印一致的边距（@page 只在打印时生效） */
+@media screen {
+  html, body { background: #e9e9e9; }
+  body { padding: 10mm 0; }
+  .page {
+    width: 527.24pt;
+    margin: 0 auto;
+    padding: 39.69pt 34.02pt 39.69pt 34.02pt;
+    background: #fff;
+    box-shadow: 0 .3mm 1.2mm rgba(0, 0, 0, .3);
+  }
+}
+@media print {
+  html, body { background: #fff; padding: 0; }
+  .page { width: auto; margin: 0; padding: 0; background: #fff; box-shadow: none; }
+}
+</style></head><body>
+<div class='page'>
+<header class='doc-head'><h1>const_doubao 源码</h1><div class='meta'>4 个文件 · 70 行 · 生成于 2026-10-08 18:36 · 行号对应源文件实际行号</div></header>
+<section class="sheet"><div class="file-head"><span class="name">CMakeLists.txt</span><span class="sub">9 行</span></div><table class="code"><tr><td class="num">1</td><td class="line"><div class="ln">cmake_minimum_required(VERSION 3.16)</div></td></tr><tr><td class="num">2</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">3</td><td class="line"><div class="ln">project(const_doubao LANGUAGES CXX)</div></td></tr><tr><td class="num">4</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">5</td><td class="line"><div class="ln">set(CMAKE_CXX_STANDARD 17)</div></td></tr><tr><td class="num">6</td><td class="line"><div class="ln">set(CMAKE_CXX_STANDARD_REQUIRED ON)</div></td></tr><tr><td class="num">7</td><td class="line"><div class="ln">set(CMAKE_CXX_EXTENSIONS OFF)</div></td></tr><tr><td class="num">8</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">9</td><td class="line"><div class="ln">add_executable(const_doubao main.cpp Student.cpp)</div></td></tr></table></section>
+<section class="sheet"><div class="file-head"><span class="name">Student.h</span><span class="sub">23 行</span></div><table class="code"><tr><td class="num">1</td><td class="line"><div class="ln">#pragma once</div></td></tr><tr><td class="num">2</td><td class="line"><div class="ln">#include &lt;string&gt;</div></td></tr><tr><td class="num">3</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">4</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>声明在<i> Student.cpp </i>中定义的及格分数常量。</span></div></td></tr><tr><td class="num">5</td><td class="line"><div class="ln">extern const int PASS_SCORE;</div></td></tr><tr><td class="num">6</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">7</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>保存学生姓名和分数，并提供读取与修改分数的接口。</span></div></td></tr><tr><td class="num">8</td><td class="line"><div class="ln">class Student {</div></td></tr><tr><td class="num">9</td><td class="line"><div class="ln">  private:</div></td></tr><tr><td class="num">10</td><td class="line"><div class="ln">    int score;        <span class="cmt"><i>// </i>学生分数。</span></div></td></tr><tr><td class="num">11</td><td class="line"><div class="ln">    std::string name; <span class="cmt"><i>// </i>学生姓名。</span></div></td></tr><tr><td class="num">12</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">13</td><td class="line"><div class="ln">  public:</div></td></tr><tr><td class="num">14</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>使用姓名和分数初始化学生对象。</span></div></td></tr><tr><td class="num">15</td><td class="line"><div class="ln">    Student(const std::string &amp;n, int s);</div></td></tr><tr><td class="num">16</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">17</td><td class="line"><div class="ln">    <span class="cmt"><i>// const </i>表示读取操作不会修改当前对象。</span></div></td></tr><tr><td class="num">18</td><td class="line"><div class="ln">    int getScore() const;</div></td></tr><tr><td class="num">19</td><td class="line"><div class="ln">    std::string getName() const;</div></td></tr><tr><td class="num">20</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">21</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>更新学生分数。</span></div></td></tr><tr><td class="num">22</td><td class="line"><div class="ln">    void setScore(int s);</div></td></tr><tr><td class="num">23</td><td class="line"><div class="ln">};</div></td></tr></table></section>
+<section class="sheet"><div class="file-head"><span class="name">Student.cpp</span><span class="sub">16 行</span></div><table class="code"><tr><td class="num">1</td><td class="line"><div class="ln">#include &quot;Student.h&quot;</div></td></tr><tr><td class="num">2</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">3</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>定义并初始化头文件中声明的外部常量，供其他源文件使用。</span></div></td></tr><tr><td class="num">4</td><td class="line"><div class="ln">extern const int PASS_SCORE = 60;</div></td></tr><tr><td class="num">5</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">6</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>初始化列表为姓名和分数赋初值；成员按头文件中的声明顺序初始化。</span></div></td></tr><tr><td class="num">7</td><td class="line"><div class="ln">Student::Student(const std::string &amp;n, int s) : name(n), score(s) {}</div></td></tr><tr><td class="num">8</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">9</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>返回学生分数，不修改对象。</span></div></td></tr><tr><td class="num">10</td><td class="line"><div class="ln">int Student::getScore() const { return score; }</div></td></tr><tr><td class="num">11</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">12</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>返回学生姓名的副本，不修改对象。</span></div></td></tr><tr><td class="num">13</td><td class="line"><div class="ln">std::string Student::getName() const { return name; }</div></td></tr><tr><td class="num">14</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">15</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>将学生分数更新为传入的值。</span></div></td></tr><tr><td class="num">16</td><td class="line"><div class="ln">void Student::setScore(int s) { score = s; }</div></td></tr></table></section>
+<section class="sheet"><div class="file-head"><span class="name">main.cpp</span><span class="sub">22 行</span></div><table class="code"><tr><td class="num">1</td><td class="line"><div class="ln">#include &quot;Student.h&quot;</div></td></tr><tr><td class="num">2</td><td class="line"><div class="ln">#include &lt;iostream&gt;</div></td></tr><tr><td class="num">3</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">4</td><td class="line"><div class="ln"><span class="cmt"><i>// </i>程序入口。</span></div></td></tr><tr><td class="num">5</td><td class="line"><div class="ln">int main() {</div></td></tr><tr><td class="num">6</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>输出定义在<i> Student.cpp </i>中的及格分数常量。</span></div></td></tr><tr><td class="num">7</td><td class="line"><div class="ln">    std::cout &lt;&lt; &quot;及格线是&quot; &lt;&lt; PASS_SCORE &lt;&lt; std::endl;</div></td></tr><tr><td class="num">8</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">9</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>创建姓名为<i> Tom</i>、分数为<i> 85 </i>的学生。</span></div></td></tr><tr><td class="num">10</td><td class="line"><div class="ln">    Student s(&quot;Tom&quot;, 85);</div></td></tr><tr><td class="num">11</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">12</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>常量引用允许读取对象，但不能通过该引用修改对象。</span></div></td></tr><tr><td class="num">13</td><td class="line"><div class="ln">    const Student &amp;ref = s;</div></td></tr><tr><td class="num">14</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">15</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>输出姓名、分数，并根据分数与及格线的比较结果输出状态。</span></div></td></tr><tr><td class="num">16</td><td class="line"><div class="ln">    std::cout &lt;&lt; ref.getName() &lt;&lt; &quot;分数&quot; &lt;&lt; ref.getScore()</div></td></tr><tr><td class="num">17</td><td class="line"><div class="ln">              &lt;&lt; (ref.getScore() &gt;= PASS_SCORE ? &quot;及格&quot; : &quot;不及格&quot;)</div></td></tr><tr><td class="num">18</td><td class="line"><div class="ln">              &lt;&lt; std::endl;</div></td></tr><tr><td class="num">19</td><td class="line"><div class="ln">&nbsp;</div></td></tr><tr><td class="num">20</td><td class="line"><div class="ln">    <span class="cmt"><i>// </i>返回<i> 0 </i>表示程序正常结束。</span></div></td></tr><tr><td class="num">21</td><td class="line"><div class="ln">    return 0;</div></td></tr><tr><td class="num">22</td><td class="line"><div class="ln">}</div></td></tr></table></section>
+</div>
+</body></html>
