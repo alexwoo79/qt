@@ -16,8 +16,8 @@
 | `04-每周打卡表.md` | 12 周 × 7 天的逐日勾选清单 + 每周验收问题 + 通用复盘栏 |
 | `code/` | 全部例题源码 + CMakeLists.txt + run_all.sh + outputs/（真实输出存档） |
 | `print-out/` | 可打印讲义：`00-计划细化版.md` + `04-每周打卡表.md` 排成 A4（HTML + PDF + 逐页预览） |
-| `print-out-examples/` | 可打印代码集：`05-例题代码索引.md` + 17 个例题源码，33 页 A4，含页码目录；`p1_01`/`p1_02` 的代码页后各插了一页内存结构图（第 3、6–7 页） |
-| `memory-maps/` | 内存结构图（PDF/SVG/PNG + 生成脚本）：`p1_01_sizeof.cpp`（成员/填充/vptr 布局）与 `p1_02_layout.cpp`（成员顺序对比 + 偏移标尺 + 原始字节 dump，含 `std::string` 短串/长串两态） |
+| `print-out-examples/` | 可打印代码集：`05-例题代码索引.md` + 17 个例题源码，28 页 A4，含页码目录；`p1_01`/`p1_02`/`p1_03` 的代码页后插了内存结构图（第 3、6–7、9–11 页） |
+| `memory-maps/` | 内存结构图（PDF/SVG/PNG + 生成脚本）：`p1_01_sizeof.cpp`（成员/填充/vptr 布局）、`p1_02_layout.cpp`（成员顺序对比 + 偏移标尺 + 原始字节 dump，含 `std::string` 短串/长串两态）、`p1_03_stack_heap.cpp`（栈/堆/静态区三段区间 + main 栈帧逐格图 + Node 堆块与释放顺序，含 macOS/Linux 双平台复核） |
 
 ## 环境（本机已确认可用）
 
@@ -39,6 +39,7 @@ cmake -S . -B build && cmake --build build -j   # 或者用 CMake 逐个构建
 # 重新生成打印稿：
 python3 memory-maps/draw.py memory-maps         # 内存结构图（p1_01）
 python3 memory-maps/draw_p1_02.py               # 内存结构图（p1_02）
+python3 memory-maps/draw_p1_03.py               # 内存结构图（p1_03）
 python3 print-out-examples/build_handout.py     # 代码集 HTML + PDF + 预览图（需沙箱外权限）
 ```
 

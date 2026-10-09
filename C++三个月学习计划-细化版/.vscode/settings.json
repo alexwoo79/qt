@@ -1,0 +1,19 @@
+{
+  // 使用 vscode-clang-format 扩展，并读取项目中的 .clang-format
+  "[cpp]": {
+    "editor.defaultFormatter": "clang-format.vscode-clang-format",
+    "editor.formatOnSave": true
+  },
+  "clang-format.language.cpp.enable": true,
+  "clang-format.style": "file",
+  "clang-format.executable.linux": "/usr/bin/clang-format",
+  "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+  "C_Cpp.codeAnalysis.runAutomatically": true,
+  "C_Cpp.codeAnalysis.clangTidy.path": "/usr/bin/clang-tidy",
+  "C_Cpp.codeAnalysis.clangTidy.useBuildPath": true,
+  "C_Cpp.default.compileCommands": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/compile_commands.json",
+  "cmake.sourceDirectory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code",
+  "code-runner.executorMap": {
+    "cpp": "cd \"$dir\" && clang++ -std=c++17 -g -O0 -Wall -Wextra \"$fileName\" -o \"$fileNameWithoutExt\" && \"$dir$fileNameWithoutExt\""
+  }
+}

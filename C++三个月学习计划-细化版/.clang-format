@@ -1,0 +1,11 @@
+# 项目级 clang-format 配置
+# 读取者：clangd（VS Code C/C++ 默认格式化器）、vscode-clang-format 扩展、命令行 clang-format
+# 验证：clang-format --style=file -dump-config test_clang_tidy.cpp | rg IndentWidth
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+# 让 public:/private: 顶格，类成员缩进 4
+AccessModifierOffset: -4
+ContinuationIndentWidth: 4

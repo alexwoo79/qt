@@ -4,9 +4,10 @@
 static int g_counter = 0;
 
 static void level(int depth) {
-    int local = depth;
-    printf("level(%d): 栈变量 &local = %p\n", depth, (void *)&local);
-    if (depth < 3) level(depth + 1);
+    for (; depth <= 3; ++depth) {
+        int local = depth;
+        printf("level(%d): 栈变量 &local = %p\n", depth, (void *)&local);
+    }
 }
 
 struct Node {
@@ -21,11 +22,12 @@ int main() {
 
     printf("-- 同一函数里的局部变量 --\n");
     int a = 1, b = 2, c = 3;
-    printf("&a=%p &b=%p &c=%p（地址不保证连续）\n", (void *)&a, (void *)&b, (void *)&c);
+    printf("&a=%p &b=%p &c=%p（地址不保证连续）\n", (void *)&a, (void *)&b,
+           (void *)&c);
     int arr[4] = {0, 1, 2, 3};
     for (int i = 0; i < 4; ++i) {
-        printf("arr[%d] 值=%d 地址=%p（同一数组内连续，步长 %zu）\n",
-               i, arr[i], (void *)&arr[i], sizeof(int));
+        printf("arr[%d] 值=%d 地址=%p（同一数组内连续，步长 %zu）\n", i, arr[i],
+               (void *)&arr[i], sizeof(int));
     }
 
     printf("\n-- 堆：地址由分配器决定，通常与栈相距很远 --\n");

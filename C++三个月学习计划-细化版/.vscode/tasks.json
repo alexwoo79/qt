@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C/C++: clang++ build active file",
+            "type": "process",
+            "command": "clang++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "-O0",
+                "-Wall",
+                "-Wextra",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/build/${fileBasenameNoExtension}_debug"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": "$gcc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

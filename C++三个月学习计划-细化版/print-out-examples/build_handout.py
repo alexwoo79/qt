@@ -47,6 +47,14 @@ FIGURES = {
         (MAPS / "p1_02_memory_map-2.png",
          "p1_02_layout.cpp · 内存结构图 第 2 页 / 共 2 页（WithString 与 std::string 的两种形态）"),
     ],
+    "p1_03_stack_heap.cpp": [
+        (MAPS / "p1_03_memory_map-1.png",
+         "p1_03_stack_heap.cpp · 内存结构图 第 1 页 / 共 3 页（栈 / 堆 / 静态区三段区间 + 递归栈帧 + 链表）"),
+        (MAPS / "p1_03_memory_map-2.png",
+         "p1_03_stack_heap.cpp · 内存结构图 第 2 页 / 共 3 页（main 栈帧逐格 + 递归帧 + 地址复用）"),
+        (MAPS / "p1_03_memory_map-3.png",
+         "p1_03_stack_heap.cpp · 内存结构图 第 3 页 / 共 3 页（Node 的 16 字节 + 分配/释放顺序 + 栈 vs 堆）"),
+    ],
 }
 
 PAPERS = {"A4": (595.276, 841.89), "A5": (419.53, 595.28), "A3": (841.89, 1190.55),

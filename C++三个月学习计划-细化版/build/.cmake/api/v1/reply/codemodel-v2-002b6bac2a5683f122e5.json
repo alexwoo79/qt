@@ -1,0 +1,241 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : [],
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-b23a0b23c080df4d29ba.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "cpp_deep_dive",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "p1_01_sizeof::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p1_01_sizeof-Debug-3c54ed141e6ddf0edce7.json",
+					"name" : "p1_01_sizeof",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p1_02_layout::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p1_02_layout-Debug-558fb8a7130e4c0157de.json",
+					"name" : "p1_02_layout",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p1_03_stack_heap::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p1_03_stack_heap-Debug-e3936ad0cc04665b94a1.json",
+					"name" : "p1_03_stack_heap",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p1_04_vptr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p1_04_vptr-Debug-ca60a1088dc3440e20ad.json",
+					"name" : "p1_04_vptr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p1_05_polymorphism::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p1_05_polymorphism-Debug-a6536173fa12336ea29a.json",
+					"name" : "p1_05_polymorphism",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p2_01_string::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p2_01_string-Debug-3b1905ff9dee2bc9f2ec.json",
+					"name" : "p2_01_string",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p2_02_vector::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p2_02_vector-Debug-f9dfc2db16ed97e4ced5.json",
+					"name" : "p2_02_vector",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p2_03_raii::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p2_03_raii-Debug-389c4c58b5739bb44b34.json",
+					"name" : "p2_03_raii",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p2_04_unique_ptr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p2_04_unique_ptr-Debug-8e6ade22ab7b569f7b5d.json",
+					"name" : "p2_04_unique_ptr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p2_05_shared_ptr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p2_05_shared_ptr-Debug-ad29d51e0182100faa62.json",
+					"name" : "p2_05_shared_ptr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_01_multi_inherit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_01_multi_inherit-Debug-3b62a2c38e4877822425.json",
+					"name" : "p3_01_multi_inherit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_02_virtual_inherit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_02_virtual_inherit-Debug-72a2fb360f63bdc46edc.json",
+					"name" : "p3_02_virtual_inherit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_03_overflow::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_03_overflow-Debug-80a1f1c167f37cb61e1b.json",
+					"name" : "p3_03_overflow",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_03_overflow_asan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_03_overflow_asan-Debug-78c76ba48aa352dd8ef7.json",
+					"name" : "p3_03_overflow_asan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_04_use_after_free::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_04_use_after_free-Debug-8b5d7f8c2814775779f3.json",
+					"name" : "p3_04_use_after_free",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_04_use_after_free_asan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_04_use_after_free_asan-Debug-c55b6fcbe51f40418d55.json",
+					"name" : "p3_04_use_after_free_asan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_05_double_free::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_05_double_free-Debug-2e34c1de2cabeb5c018a.json",
+					"name" : "p3_05_double_free",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_05_double_free_asan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_05_double_free_asan-Debug-b3d81ca85bd789274fff.json",
+					"name" : "p3_05_double_free_asan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_06_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_06_project-Debug-9b45755344bbb0dd191a.json",
+					"name" : "p3_06_project",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "p3_07_diagnose::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-p3_07_diagnose-Debug-13091ae9f4bc0082cac9.json",
+					"name" : "p3_07_diagnose",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_clang_tidy::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_clang_tidy-Debug-f54c7d4df077aa6b5f4b.json",
+					"name" : "test_clang_tidy",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/alex/Documents/github/qt/C++\u4e09\u4e2a\u6708\u5b66\u4e60\u8ba1\u5212-\u7ec6\u5316\u7248/build",
+		"source" : "/home/alex/Documents/github/qt/C++\u4e09\u4e2a\u6708\u5b66\u4e60\u8ba1\u5212-\u7ec6\u5316\u7248/code"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 11
+	}
+}

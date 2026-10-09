@@ -4,39 +4,39 @@
 #include <cstdio>
 #include <string>
 
-struct LooseLayout {  // 顺序不好：char → double → int
+struct LooseLayout { // 顺序不好：char → double → int
     char c;
     double d;
     int i;
 };
 
-struct TightLayout {  // 顺序调整后能省 8 字节
+struct TightLayout { // 顺序调整后能省 8 字节
     double d;
     int i;
     char c;
 };
 
-struct WithString {  // 含库类型：std::string 在 libc++ 里是 24 字节
+struct WithString { // 含库类型：std::string 在 libc++ 里是 24 字节
     int i;
     std::string s;
     char c;
 };
 
-template <typename T>
-static void dump_bytes(const T &obj, const char *name) {
+template <typename T> static void dump_bytes(const T &obj, const char *name) {
     const unsigned char *p = reinterpret_cast<const unsigned char *>(&obj);
     printf("%-12s (%2zu 字节): ", name, sizeof(T));
-    for (size_t i = 0; i < sizeof(T); ++i) printf("%02x ", p[i]);
+    for (size_t i = 0; i < sizeof(T); ++i)
+        printf("%02x ", p[i]);
     printf("\n");
 }
 
 int main() {
     printf("sizeof(LooseLayout) = %zu\n", sizeof(LooseLayout));
-    printf("  offsetof c=%zu d=%zu i=%zu\n",
-           offsetof(LooseLayout, c), offsetof(LooseLayout, d), offsetof(LooseLayout, i));
+    printf("  offsetof c=%zu d=%zu i=%zu\n", offsetof(LooseLayout, c),
+           offsetof(LooseLayout, d), offsetof(LooseLayout, i));
     printf("sizeof(TightLayout) = %zu\n", sizeof(TightLayout));
-    printf("  offsetof d=%zu i=%zu c=%zu\n",
-           offsetof(TightLayout, d), offsetof(TightLayout, i), offsetof(TightLayout, c));
+    printf("  offsetof d=%zu i=%zu c=%zu\n", offsetof(TightLayout, d),
+           offsetof(TightLayout, i), offsetof(TightLayout, c));
     printf("同样的三个成员，顺序不同差了 %zu 字节。\n\n",
            sizeof(LooseLayout) - sizeof(TightLayout));
 
@@ -54,9 +54,11 @@ int main() {
     dump_bytes(tight, "TightLayout");
     printf("  → 填充被挤到尾部，只剩 3 字节。\n\n");
 
-    printf("sizeof(std::string) = %zu（libc++ 固定 24 字节）\n", sizeof(std::string));
+    printf("sizeof(std::string) = %zu（libc++ 固定 24 字节）\n",
+           sizeof(std::string));
     printf("sizeof(WithString)  = %zu  offsetof(s)=%zu offsetof(c)=%zu\n",
-           sizeof(WithString), offsetof(WithString, s), offsetof(WithString, c));
+           sizeof(WithString), offsetof(WithString, s),
+           offsetof(WithString, c));
     WithString ws{};
     ws.i = 1;
     ws.s = "abc";

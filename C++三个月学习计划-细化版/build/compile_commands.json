@@ -1,0 +1,128 @@
+[
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p1_01_sizeof.dir/p1_01_sizeof.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_01_sizeof.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_01_sizeof.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p1_01_sizeof.dir/p1_01_sizeof.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p1_02_layout.dir/p1_02_layout.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_02_layout.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_02_layout.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p1_02_layout.dir/p1_02_layout.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p1_03_stack_heap.dir/p1_03_stack_heap.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_03_stack_heap.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_03_stack_heap.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p1_03_stack_heap.dir/p1_03_stack_heap.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p1_04_vptr.dir/p1_04_vptr.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_04_vptr.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_04_vptr.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p1_04_vptr.dir/p1_04_vptr.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p1_05_polymorphism.dir/p1_05_polymorphism.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_05_polymorphism.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p1_05_polymorphism.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p1_05_polymorphism.dir/p1_05_polymorphism.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p2_01_string.dir/p2_01_string.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_01_string.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_01_string.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p2_01_string.dir/p2_01_string.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p2_02_vector.dir/p2_02_vector.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_02_vector.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_02_vector.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p2_02_vector.dir/p2_02_vector.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p2_03_raii.dir/p2_03_raii.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_03_raii.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_03_raii.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p2_03_raii.dir/p2_03_raii.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p2_04_unique_ptr.dir/p2_04_unique_ptr.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_04_unique_ptr.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_04_unique_ptr.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p2_04_unique_ptr.dir/p2_04_unique_ptr.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p2_05_shared_ptr.dir/p2_05_shared_ptr.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_05_shared_ptr.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p2_05_shared_ptr.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p2_05_shared_ptr.dir/p2_05_shared_ptr.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_01_multi_inherit.dir/p3_01_multi_inherit.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_01_multi_inherit.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_01_multi_inherit.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_01_multi_inherit.dir/p3_01_multi_inherit.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_02_virtual_inherit.dir/p3_02_virtual_inherit.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_02_virtual_inherit.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_02_virtual_inherit.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_02_virtual_inherit.dir/p3_02_virtual_inherit.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_03_overflow.dir/p3_03_overflow.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_03_overflow.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_03_overflow.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_03_overflow.dir/p3_03_overflow.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_04_use_after_free.dir/p3_04_use_after_free.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_04_use_after_free.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_04_use_after_free.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_04_use_after_free.dir/p3_04_use_after_free.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_05_double_free.dir/p3_05_double_free.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_05_double_free.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_05_double_free.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_05_double_free.dir/p3_05_double_free.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_06_project.dir/p3_06_project.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_06_project.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_06_project.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_06_project.dir/p3_06_project.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/p3_07_diagnose.dir/p3_07_diagnose.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_07_diagnose.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_07_diagnose.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_07_diagnose.dir/p3_07_diagnose.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -Wall -Wextra -g -O0 -o CMakeFiles/test_clang_tidy.dir/home/alex/Documents/github/qt/C++三个月学习计划-细化版/test_clang_tidy.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/test_clang_tidy.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/test_clang_tidy.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/test_clang_tidy.dir/home/alex/Documents/github/qt/C++三个月学习计划-细化版/test_clang_tidy.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -fsanitize=address -g -O0 -o CMakeFiles/p3_03_overflow_asan.dir/p3_03_overflow.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_03_overflow.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_03_overflow.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_03_overflow_asan.dir/p3_03_overflow.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -fsanitize=address -g -O0 -o CMakeFiles/p3_04_use_after_free_asan.dir/p3_04_use_after_free.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_04_use_after_free.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_04_use_after_free.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_04_use_after_free_asan.dir/p3_04_use_after_free.cpp.o"
+},
+{
+  "directory": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build",
+  "command": "/usr/bin/clang++ -g -std=c++17 -fsanitize=address -g -O0 -o CMakeFiles/p3_05_double_free_asan.dir/p3_05_double_free.cpp.o -c /home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_05_double_free.cpp",
+  "file": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/code/p3_05_double_free.cpp",
+  "output": "/home/alex/Documents/github/qt/C++三个月学习计划-细化版/build/CMakeFiles/p3_05_double_free_asan.dir/p3_05_double_free.cpp.o"
+}
+]
